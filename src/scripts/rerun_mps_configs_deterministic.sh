@@ -4,7 +4,7 @@
 #
 # MPS has no deterministic index_put kernel, so those runs carry
 # deterministic=False in their platform fingerprint. Section 8b of
-# docs/fm_uncertainty_audit_scope.md requires final reported numbers to come
+# Final reported numbers must come
 # from a deterministic backend, and the two headline results -- CBraMod
 # fine-tuned and the tuned broadband convnet -- are both in that set.
 #
