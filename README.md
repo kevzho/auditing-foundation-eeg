@@ -68,7 +68,6 @@ src/models/                      model definitions and foundation-model adapters
 reproducibility/                 the shell scripts the CLI wraps
 results/paper_calibration_stats/ generated tables, including fm_audit/REPORT.md
 results/fm_probe*/               per-subject metrics and run records
-paper/                           manuscript source
 figures/                         figures that are not script-generated
 ```
 
