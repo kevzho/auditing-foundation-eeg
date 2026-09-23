@@ -1,0 +1,67 @@
+{
+  "dataset": "bci4_2a",
+  "experiments": [
+    "mdrm_t_ea"
+  ],
+  "external_confirmatory": false,
+  "subjects": [
+    1
+  ],
+  "summary": [
+    {
+      "chance_Brier": 0.75,
+      "chance_accuracy": 0.25,
+      "dataset": "bci4_2a",
+      "experiment": "baseline_ce_cropped_shallow_convnet",
+      "experiment_key": "baseline",
+      "heldout_Brier_mean": 0.5769132426960583,
+      "heldout_Brier_std": 0.0,
+      "heldout_ECE_mean": 0.11654288238559607,
+      "heldout_ECE_std": 0.0,
+      "heldout_NLL_mean": 0.9772399150171461,
+      "heldout_NLL_std": 0.0,
+      "heldout_accuracy_mean": 0.53125,
+      "heldout_accuracy_std": 0.0,
+      "n_classes": 4,
+      "n_subjects": 1,
+      "val_Brier_mean": 0.5514922763126779,
+      "val_Brier_std": 0.0,
+      "val_ECE_mean": 0.17505889088650076,
+      "val_ECE_std": 0.0,
+      "val_NLL_mean": 0.9361136544885782,
+      "val_NLL_std": 0.0,
+      "val_accuracy_mean": 0.5517241379310345,
+      "val_accuracy_std": 0.0
+    },
+    {
+      "chance_Brier": 0.75,
+      "chance_accuracy": 0.25,
+      "dataset": "bci4_2a",
+      "experiment": "mdrm_t_train_only_euclidean_alignment",
+      "experiment_key": "mdrm_t_ea",
+      "heldout_Brier_mean": 0.5206183532032498,
+      "heldout_Brier_std": 0.0,
+      "heldout_ECE_mean": 0.12967288777670533,
+      "heldout_ECE_std": 0.0,
+      "heldout_NLL_mean": 0.884106265640705,
+      "heldout_NLL_std": 0.0,
+      "heldout_accuracy_mean": 0.5729166666666666,
+      "heldout_accuracy_std": 0.0,
+      "n_classes": 4,
+      "n_subjects": 1,
+      "val_Brier_mean": 0.38088801205689937,
+      "val_Brier_std": 0.0,
+      "val_ECE_mean": 0.14354675358974847,
+      "val_ECE_std": 0.0,
+      "val_NLL_mean": 0.6015013616129905,
+      "val_NLL_std": 0.0,
+      "val_accuracy_mean": 0.7068965517241379,
+      "val_accuracy_std": 0.0
+    }
+  ],
+  "validation_discipline": {
+    "eval_labels_used_for_selection": false,
+    "heldout_split": "A0xE_final_report_only",
+    "selection_split": "A0xT_validation"
+  }
+}

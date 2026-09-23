@@ -1,0 +1,141 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Foundation models decode four-class motor imagery below every
+supervised comparator}
+
+Table~\ref{tab:heldout} gives held-out performance on BCI~IV-2a. The ordering
+is total: every supervised arm, including the weakest one we ran, outperforms
+every foundation-model configuration. The best foundation model, CBraMod
+fine-tuned with its validation-selected recipe, reaches 0.4796 against a
+0.5305 floor for the supervised arms and 0.7145 for the strongest. Against
+each supervised comparator the paired accuracy comparison sits at the
+attainable-$p$ floor with no subject wins.
+
+\begin{table}[t]
+\centering
+\caption{Held-out performance, BCI~IV-2a, $n=9$, chance accuracy 0.250.
+Condensed from the full grid of 26 configurations.}
+\label{tab:heldout}
+\small
+\begin{tabular}{llccc}
+\toprule
+Configuration & Role & Acc & Brier & ECE \\
+\midrule
+seed ensemble            & supervised & 0.7145 & 0.3852 & 0.0829 \\
+ShallowConvNet           & supervised & 0.6962 & 0.4047 & 0.0808 \\
+ATCNet, broadband        & supervised & 0.6562 & 0.4695 & 0.1062 \\
+EEG Conformer, broadband & supervised & 0.5305 & 0.5858 & 0.1072 \\
+\midrule
+CBraMod, fine-tuned      & FM         & 0.4796 & 0.6493 & 0.1236 \\
+CBraMod, frozen          & FM         & 0.3927 & 0.7080 & 0.1030 \\
+CBraMod, random init     & control    & 0.3407 & 0.7396 & 0.0993 \\
+LaBraM, frozen           & FM         & 0.3322 & 0.7323 & 0.0874 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{It is not a fine-tuning recipe artifact}
+Under the reference recipe the best selection-Brier epoch was 0--4 of 60 across
+all runs while warm-up alone lasts six, so the model peaked before the learning
+rate reached its target --- what overfitting a 5.8\,M-parameter transformer to
+230 trials looks like. A six-configuration sweep ranked on validation improves
+fine-tuning substantially and leaves the ordering in Table~\ref{tab:heldout}
+intact. Both remedies that work, freezing lower blocks and lowering the learning
+rate, reduce how far pretrained weights can move, consistent with that
+reading.
+
+\subsection{The matched-input control changes sign across architectures}
+\label{sec:decomp}
+
+Because the two arms are fed different preprocessing by design
+(Section~\ref{sec:twopaths}), a reader is entitled to ask whether the gap is
+the models or the pipeline. The standard answer is a matched-input control:
+retrain the supervised comparator on the arrays the foundation models actually
+receive. Table~\ref{tab:decomp} runs that control on three architectures.
+
+\begin{table}[t]
+\centering
+\caption{Matched-input control, BCI~IV-2a, $n=9$. The pipeline term is
+narrowband minus broadband accuracy for the same architecture, so a negative
+value means the foundation models' preprocessing \emph{helped} that
+architecture. Wins counts subjects for which the narrowband input was better.
+$p_{\mathrm{BH}}$ is corrected across every component test this decomposition
+computes.}
+\label{tab:decomp}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Architecture & Narrow & Broad & Pipeline term & Wins & $p_{\mathrm{BH}}$ \\
+\midrule
+ATCNet         & 0.5788 & 0.6562 & $-0.078$ (helps) & 1/9 & 0.073 \\
+ShallowConvNet & 0.6453 & 0.6084 & $+0.037$ (costs) & 5/9 & 0.304 \\
+EEG Conformer  & 0.6182 & 0.5305 & $+0.088$ (costs) & 8/9 & 0.176 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For ATCNet the foundation models' own preprocessing made the supervised
+baseline \emph{better} by 0.078 accuracy, on 8 of 9 subjects, so for that
+comparator there is no preprocessing explanation for the gap at all. For EEG
+Conformer the same pipeline cost 0.088, on 8 of 9 subjects in the opposite
+direction. The point estimates therefore differ in sign, and the subject-level
+directions are opposed.
+
+We state this carefully. No individual pipeline term clears
+Benjamini--Hochberg correction across this decomposition's family, so none is
+separately established at $n=9$. What the table supports is narrower and
+sufficient: the measured term is not stable across comparator architectures and
+is not reliably estimable from any one of them, so a single-architecture
+matched-input control is not a dependable basis for splitting a
+pretrained-versus-supervised gap between model and pipeline --- which is how
+such controls are ordinarily used.
+
+The term is also not a filter-band term: the pipelines differ in band, filter
+design, sampling rate and notching, and the broadband arm receives its own
+per-subject architecture search, so the column measures the pipeline together
+with the retuning it requires. We report raw gaps rather than a percentage
+split, because a share is only interpretable when its denominator has a stable
+sign. Nothing in the argument is specific to EEG, and to our knowledge the
+contrast has not previously been reported.
+
+\subsection{The deficit is task-dependent}
+On two-class BNCI2014\_004 the picture changes. CBraMod fine-tuned reaches
+0.8085 against 0.8458 for the best supervised arm, 0.8185 for a tuned
+ShallowConvNet and 0.7981 for EEG Conformer --- competitive, and above one of
+the supervised comparators. The four-class deficit in Table~\ref{tab:heldout}
+is therefore not a general statement about these models on motor imagery: we
+could not detect it here. We do not attribute the difference to class count
+alone. BNCI2014\_004 differs from BCI~IV-2a in dataset, in class count, and in
+carrying three electrodes rather than 22, and this design does not separate
+those factors.
+
+\subsection{Robustness}
+Two checks, both requested by the obvious objections.
+
+\emph{Seeds.} The decisive comparison --- CBraMod fine-tuned against its
+architecture-matched random-init control --- was repeated at three independent
+reseeds of the entire pipeline, which redraws the fit/selection split, the
+initialisation and the batch ordering. On BCI~IV-2a the subject-averaged effect
+is 0.139, 0.132 and 0.130; on BNCI2014\_004 it is 0.107, 0.111 and 0.108. Every
+one of the six runs is individually significant, and the lowest subject win
+rate anywhere is 8 of 9. We do not quote these as a mean with a standard
+deviation: that spread measures reproducibility under training randomness, not
+uncertainty about the effect, which is governed by $n=9$ subjects.
+
+\emph{Budget.} A reader may object that the random-init arm was simply
+undertrained. Repeating the BCI~IV-2a comparison at 240 epochs, four times the
+budget, for both arms equally: random initialisation gained 0.017 accuracy and
+closed 0.024 of the gap, while the pretrained arm gained nothing. At the larger
+budget the effect is significant on all nine subjects. The random-init arm reached its best
+validation Brier at epoch 218 of 240 with the curve flat from about 190, so it
+had plateaued rather than been truncated --- and its best value, 0.755, is
+essentially the four-class chance Brier of 0.750.
+
+\subsection{Calibration is where they hold up}
+The raw logits are badly overconfident: frozen configurations require
+temperatures of 3.5 to 9.5, with one to four of nine subjects saturating the
+clamp at 20.0, against 1.03 for a tuned supervised convnet. After that single
+validation-fitted scalar, held-out ECE lands inside the supervised range ---
+0.103 to 0.124 for CBraMod against 0.101 to 0.143 across the tuned supervised
+arms --- despite far lower accuracy.

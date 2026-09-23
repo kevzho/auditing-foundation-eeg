@@ -1,0 +1,24 @@
+% Stanford AI+HEALTH 2026 -- lightning talk abstract. DUE Oct 15, 2026.
+% Virtual, Dec 8-9. Non-archival. No faculty advisor required.
+% Required form fields: institutional email (NOT gmail), organization,
+% academic status ("High school student, independent research").
+%
+% AUDIENCE: clinicians, healthcare leaders, health-AI researchers.
+% They will not care that CBraMod gets 0.48 on four-class. They will care
+% that a system's confidence threshold silently failed on deployment data.
+%
+% LEAD WITH THE TRUST RESULT, n=9 versions only:
+%   teacher_student_mixture configured for 40% coverage delivered 29.4%
+%   stronger_teacher       configured for 90% coverage delivered 71.9%
+%   Selection was correct under a protocol that never touched eval labels.
+% DO NOT lead with the MDRM-T collapse to 0% -- that is n=1.
+%
+% ARC: health AI is increasingly built on pretrained models -> we audited
+% whether pretraining transfers for a clinical-entry neurotech task under a
+% leak-proof protocol -> the coverage failure above -> the preprocessing
+% control is unstable across architectures, so published attributions are
+% not reliable -> selection discipline is necessary but not sufficient.
+%
+% Say "all model and hyperparameter selection used training-session data
+% only; held-out session labels were accessed once." Avoid the word "locked"
+% -- a clinical audience reads it as the FDA sense (frozen weights).

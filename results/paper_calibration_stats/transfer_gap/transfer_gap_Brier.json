@@ -1,0 +1,66 @@
+{
+  "metric": "Brier",
+  "alpha": 0.05,
+  "summary": [
+    {
+      "dataset": "BCI IIIa",
+      "n_subjects": 3,
+      "n_methods": 4,
+      "selection_correct_count": 3,
+      "selection_correct_rate": 1.0,
+      "mean_regret": 0.0,
+      "median_regret": 0.0,
+      "max_regret": 0.0,
+      "mean_norm_regret": 0.0,
+      "mean_spearman_rho": 1.0,
+      "median_spearman_rho": 1.0,
+      "frac_rho_negative": 0.0,
+      "mean_norm_rank_shift": 0.0
+    },
+    {
+      "dataset": "BCI IV-2a",
+      "n_subjects": 9,
+      "n_methods": 11,
+      "selection_correct_count": 2,
+      "selection_correct_rate": 0.2222222222222222,
+      "mean_regret": 0.03439586845363376,
+      "median_regret": 0.03693036664170091,
+      "max_regret": 0.0818920595559609,
+      "mean_norm_regret": 0.04586115793817834,
+      "mean_spearman_rho": 0.2863599391757687,
+      "median_spearman_rho": 0.22374429223744294,
+      "frac_rho_negative": 0.1111111111111111,
+      "mean_norm_rank_shift": 0.2727272727272727
+    },
+    {
+      "dataset": "BNCI2014_001",
+      "n_subjects": 9,
+      "n_methods": 4,
+      "selection_correct_count": 4,
+      "selection_correct_rate": 0.4444444444444444,
+      "mean_regret": 0.035206161153164196,
+      "median_regret": 0.010192084713655292,
+      "max_regret": 0.1282120340485292,
+      "mean_norm_regret": 0.04694154820421893,
+      "mean_spearman_rho": 0.10370370370370366,
+      "median_spearman_rho": 0.19999999999999998,
+      "frac_rho_negative": 0.4444444444444444,
+      "mean_norm_rank_shift": 0.3888888888888889
+    },
+    {
+      "dataset": "BNCI2014_004",
+      "n_subjects": 9,
+      "n_methods": 4,
+      "selection_correct_count": 4,
+      "selection_correct_rate": 0.4444444444444444,
+      "mean_regret": 0.010266629087969714,
+      "median_regret": 4.111564821380337e-05,
+      "max_regret": 0.07362978765203662,
+      "mean_norm_regret": 0.02053325817593943,
+      "mean_spearman_rho": 0.13333333333333336,
+      "median_spearman_rho": 0.3333333333333334,
+      "frac_rho_negative": 0.4444444444444444,
+      "mean_norm_rank_shift": 0.2962962962962963
+    }
+  ]
+}

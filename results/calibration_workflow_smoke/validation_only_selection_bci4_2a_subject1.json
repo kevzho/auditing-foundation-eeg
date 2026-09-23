@@ -1,0 +1,184 @@
+{
+  "chance_Brier": 0.75,
+  "chance_accuracy": 0.25,
+  "classes": [
+    769,
+    770,
+    771,
+    772
+  ],
+  "dataset": "bci4_2a",
+  "dataset_label": "BCI_IV_2a",
+  "experiments": {
+    "baseline": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.28102415800094604,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "baseline_ce_cropped_shallow_convnet",
+      "heldout_metrics": {
+        "Brier": 0.5769132426960583,
+        "ECE": 0.11654288238559607,
+        "NLL": 0.9772399150171461,
+        "accuracy": 0.53125,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.6265937895501954,
+        "ECE": 0.1643434736444684,
+        "NLL": 1.136130312034343,
+        "accuracy": 0.53125,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "crop_audit": {
+          "crop_dimension_source": "A0xT_train_dimensions_and_predeclared_cli_grid_only",
+          "crop_sizes": [
+            384
+          ],
+          "crop_strides": [
+            128
+          ],
+          "crop_strides_normalized": [
+            128
+          ],
+          "crops_per_trial": 7,
+          "eval_labels_used_for_crop_or_aggregation_selection": false,
+          "eval_n_times_report_only": 1126,
+          "padded_to_n_times": 384,
+          "reference_n_times": 1126,
+          "reference_split": "A0xT_train",
+          "scales": [
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 7,
+              "effective_crop_size": 384,
+              "requested_crop_size": 384,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                512,
+                640,
+                742
+              ]
+            }
+          ],
+          "validation_n_times": 1126
+        },
+        "headline_control": true,
+        "model": {
+          "architecture": {
+            "dropout": 0.5,
+            "max_norm": 0.0,
+            "temporal_filters": 16,
+            "temporal_kernel": 64
+          },
+          "augmentation": {
+            "channel_dropout": 0.0,
+            "freq_mask_frac": 0.0,
+            "noise_std": 0.0,
+            "time_shift": 0
+          },
+          "average_checkpoint": "none",
+          "checkpoint_eval_labels_used": false,
+          "checkpoint_rule": "val_loss",
+          "checkpoint_selection_split": "A0xT_validation",
+          "loss": {
+            "ce": true,
+            "lambda_brier": 0.0
+          },
+          "random_seed": 42
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.5514922763126779,
+        "ECE": 0.17505889088650076,
+        "NLL": 0.9361136544885782,
+        "accuracy": 0.5517241379310345,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.6207101934856292,
+        "ECE": 0.2903205413362883,
+        "NLL": 1.1260391642427425,
+        "accuracy": 0.5517241379310345,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    }
+  },
+  "n_classes": 4,
+  "paths": {
+    "eval": "data/bci4_2a_subject1_eval.npz",
+    "train": "data/bci4_2a_subject1_train.npz"
+  },
+  "protocol": {
+    "chance_Brier": 0.75,
+    "chance_accuracy": 0.25,
+    "classes": [
+      769,
+      770,
+      771,
+      772
+    ],
+    "eval_class_counts": {
+      "0": 72,
+      "1": 72,
+      "2": 72,
+      "3": 72
+    },
+    "eval_labels_used_for": "final_metrics_only",
+    "eval_labels_used_for_selection": false,
+    "fit_split": "A0xT_train",
+    "heldout_split": "A0xE_final_report_only",
+    "n_classes": 4,
+    "n_eval": 288,
+    "n_train": 230,
+    "n_validation": 58,
+    "protocol_name": "A0xT_train_validation_to_A0xE",
+    "stratified_validation_split": true,
+    "train_class_counts": {
+      "0": 58,
+      "1": 57,
+      "2": 58,
+      "3": 57
+    },
+    "validation_class_counts": {
+      "0": 14,
+      "1": 15,
+      "2": 14,
+      "3": 15
+    },
+    "validation_split": "A0xT_validation"
+  },
+  "seeds": [
+    42
+  ],
+  "split": {
+    "eval_labels_used_for": "final_metrics_only",
+    "fit_split": "A0xT_train",
+    "stratified": true,
+    "validation_split": "A0xT_validation"
+  },
+  "subject": 1,
+  "validation_discipline": {
+    "eval_labels_used_for_selection": false,
+    "heldout_labels_used_for": "final_heldout_metrics_only",
+    "heldout_split": "A0xE_final_report_only",
+    "selection_split": "A0xT_validation",
+    "train_split": "A0xT_train"
+  }
+}

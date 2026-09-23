@@ -1,0 +1,520 @@
+{
+  "dataset": "PhysionetMI",
+  "inspection": [
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 23,
+        "right_hand": 22
+      },
+      "subject": 1
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 23,
+        "right_hand": 22
+      },
+      "subject": 2
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 23,
+        "right_hand": 22
+      },
+      "subject": 3
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 23,
+        "right_hand": 22
+      },
+      "subject": 4
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 21,
+        "right_hand": 24
+      },
+      "subject": 5
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 24,
+        "right_hand": 21
+      },
+      "subject": 6
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 23,
+        "right_hand": 22
+      },
+      "subject": 7
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 22,
+        "right_hand": 23
+      },
+      "subject": 8
+    },
+    {
+      "dataset": "PhysionetMI",
+      "error": "PhysionetMI: no leakage-safe explicit train/test session protocol was found. PhysionetMI is skipped by default because its MOABB metadata does not provide a predeclared train/test protocol here. Use --inspect-only to review metadata, or --allow-stratified-external-split to force a deterministic stratified external split.",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 45,
+        "run": {
+          "counts": {
+            "0": 15,
+            "1": 15,
+            "2": 15
+          },
+          "values": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0": 45
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 15,
+            "run": "0",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "1",
+            "session": "0"
+          },
+          {
+            "n": 15,
+            "run": "2",
+            "session": "0"
+          }
+        ]
+      },
+      "n_trials": 45,
+      "ok": false,
+      "raw_class_counts": {
+        "left_hand": 24,
+        "right_hand": 21
+      },
+      "subject": 9
+    }
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ]
+}

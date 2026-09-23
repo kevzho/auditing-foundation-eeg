@@ -1,0 +1,13 @@
+{
+  "dataset": "bci4_2a",
+  "alpha": 0.05,
+  "best_fm": "cbramod_finetune_sel",
+  "best_fm_accuracy": 0.47955246913580246,
+  "best_reference": "seed_ensemble",
+  "best_reference_accuracy": 0.7145412457912459,
+  "chance_accuracy": 0.25,
+  "fm_lift_over_chance": 0.22955246913580246,
+  "reference_lift_over_chance": 0.4645412457912459,
+  "fm_fraction_of_reference_lift": 0.4941487353718383,
+  "recommendation": "REFRAME: FM recovers <50% of supervised lift; an uncertainty audit would measure transfer failure, not calibration"
+}

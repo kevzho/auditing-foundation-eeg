@@ -1,0 +1,54 @@
+{
+  "alpha": 0.05,
+  "source": "results/validation_only_selection_dataset_comparison.csv",
+  "by_dataset": [
+    {
+      "dataset": "BCI IIIa",
+      "n_methods_run": 4,
+      "n_methods_reported": 4,
+      "n_tests": 12,
+      "bonferroni_threshold": 0.004166666666666667,
+      "n_raw_significant": 0,
+      "n_holm_significant": 0,
+      "n_bh_significant": 0,
+      "n_tests_bonferroni_unreachable": 12,
+      "min_attainable_p": 0.25
+    },
+    {
+      "dataset": "BCI IV-2a",
+      "n_methods_run": 11,
+      "n_methods_reported": 4,
+      "n_tests": 40,
+      "bonferroni_threshold": 0.00125,
+      "n_raw_significant": 10,
+      "n_holm_significant": 0,
+      "n_bh_significant": 0,
+      "n_tests_bonferroni_unreachable": 40,
+      "min_attainable_p": 0.00390625
+    },
+    {
+      "dataset": "BNCI2014_001",
+      "n_methods_run": 4,
+      "n_methods_reported": 4,
+      "n_tests": 12,
+      "bonferroni_threshold": 0.004166666666666667,
+      "n_raw_significant": 0,
+      "n_holm_significant": 0,
+      "n_bh_significant": 0,
+      "n_tests_bonferroni_unreachable": 4,
+      "min_attainable_p": 0.00390625
+    },
+    {
+      "dataset": "BNCI2014_004",
+      "n_methods_run": 4,
+      "n_methods_reported": 4,
+      "n_tests": 12,
+      "bonferroni_threshold": 0.004166666666666667,
+      "n_raw_significant": 0,
+      "n_holm_significant": 0,
+      "n_bh_significant": 0,
+      "n_tests_bonferroni_unreachable": 9,
+      "min_attainable_p": 0.00390625
+    }
+  ]
+}

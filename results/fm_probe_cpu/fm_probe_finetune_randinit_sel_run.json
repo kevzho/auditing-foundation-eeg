@@ -1,0 +1,38 @@
+{
+  "mode": "finetune",
+  "dataset": "bci4_2a",
+  "random_init": true,
+  "tag": "sel",
+  "patches": [
+    4
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "seed": 42,
+  "lr": 0.0001,
+  "epochs": 60,
+  "freeze_blocks": 10,
+  "head_warmup_epochs": 0,
+  "finetune_batch_size": 16,
+  "platform": {
+    "device": "cpu",
+    "torch": "2.13.0",
+    "numpy": "2.1.3",
+    "python": "3.13.9",
+    "platform": "macOS-15.3.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "deterministic_algorithms": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cublas_workspace_config": ":4096:8"
+  }
+}

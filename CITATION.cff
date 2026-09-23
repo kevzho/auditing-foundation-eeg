@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "CalibMI: an audit of pretrained EEG foundation models on motor imagery"
+message: "If you use this software or its artifacts, please cite the paper."
+type: software
+authors:
+  - family-names: Zhou
+    given-names: Kevin
+  - family-names: Roy
+    given-names: Sparsh
+repository-code: "https://github.com/OWNER/calibmi"
+license: MIT

@@ -1,0 +1,53 @@
+\begin{table*}[t]
+\centering
+\caption{All 40 paired held-out tests run on BCI IV-2a, corrected for multiplicity. Negative deltas improve Brier, ECE and NLL; positive deltas improve accuracy. No test is significant at $\alpha=0.05$ after Holm or Benjamini--Hochberg correction. The attainable floor column gives the smallest $p$ the exact test can produce at this subject count.}
+\label{tab:multiplicity}
+\begin{tabular}{llcccccc}
+\toprule
+Method & Metric & Mean $\Delta$ & W/T/L & $p_{\mathrm{raw}}$ & $p_{\mathrm{Holm}}$ & $p_{\mathrm{BH}}$ & floor \\
+\midrule
+Stronger teacher & NLL & +0.5010 & 0/0/9 & 0.004 & 0.156 & 0.104 & 0.004 \\
+Stronger teacher & Brier & +0.2356 & 1/0/8 & 0.008 & 0.305 & 0.104 & 0.004 \\
+Stronger teacher & accuracy & -0.1935 & 1/0/8 & 0.008 & 0.305 & 0.104 & 0.004 \\
+Stronger teacher & ECE & +0.1269 & 2/0/7 & 0.020 & 0.723 & 0.174 & 0.004 \\
+Seed ensemble$^{*}$ & Brier & -0.0195 & 8/0/1 & 0.027 & 0.984 & 0.174 & 0.004 \\
+Post-hoc calibration grid & Brier & +0.0197 & 1/2/6 & 0.031 & 1.000 & 0.174 & 0.016 \\
+Brier regularization & Brier & -0.0022 & 6/1/2 & 0.039 & 1.000 & 0.174 & 0.008 \\
+Brier regularization & NLL & -0.0046 & 6/1/2 & 0.039 & 1.000 & 0.174 & 0.008 \\
+Seed ensemble$^{*}$ & accuracy & +0.0184 & 6/1/2 & 0.039 & 1.000 & 0.174 & 0.008 \\
+Post-hoc calibration grid & NLL & +0.0497 & 1/2/6 & 0.047 & 1.000 & 0.188 & 0.016 \\
+Augmentation$^{*}$ & accuracy & +0.0191 & 5/4/0 & 0.062 & 1.000 & 0.208 & 0.062 \\
+Post-hoc calibration grid & accuracy & -0.0147 & 0/4/5 & 0.062 & 1.000 & 0.208 & 0.062 \\
+Post-hoc calibration grid & ECE & +0.0121 & 2/2/5 & 0.078 & 1.000 & 0.240 & 0.016 \\
+Calibration checkpoint & accuracy & -0.0044 & 0/5/4 & 0.125 & 1.000 & 0.333 & 0.125 \\
+Teacher/student$^{*}$ & accuracy & +0.0123 & 4/4/1 & 0.125 & 1.000 & 0.333 & 0.062 \\
+Architecture variant & ECE & +0.0238 & 4/0/5 & 0.164 & 1.000 & 0.410 & 0.004 \\
+Augmentation$^{*}$ & Brier & -0.0187 & 4/4/1 & 0.188 & 1.000 & 0.441 & 0.062 \\
+Augmentation$^{*}$ & NLL & -0.0184 & 3/4/2 & 0.312 & 1.000 & 0.694 & 0.062 \\
+Seed ensemble$^{*}$ & NLL & -0.0181 & 6/0/3 & 0.359 & 1.000 & 0.714 & 0.004 \\
+Calibration checkpoint & ECE & +0.0064 & 3/2/4 & 0.375 & 1.000 & 0.714 & 0.016 \\
+Brier regularization & accuracy & +0.0047 & 3/5/1 & 0.375 & 1.000 & 0.714 & 0.125 \\
+Architecture variant & accuracy & +0.0149 & 5/1/3 & 0.461 & 1.000 & 0.794 & 0.008 \\
+SWA/EMA & accuracy & -0.0017 & 2/2/5 & 0.469 & 1.000 & 0.794 & 0.016 \\
+Architecture variant & Brier & -0.0082 & 6/0/3 & 0.496 & 1.000 & 0.794 & 0.004 \\
+Architecture variant & NLL & +0.0178 & 4/0/5 & 0.496 & 1.000 & 0.794 & 0.004 \\
+SWA/EMA & ECE & -0.0010 & 4/1/4 & 0.547 & 1.000 & 0.810 & 0.008 \\
+Teacher/student$^{*}$ & ECE & +0.0147 & 4/1/4 & 0.547 & 1.000 & 0.810 & 0.008 \\
+Calibration checkpoint & Brier & +0.0005 & 2/2/5 & 0.578 & 1.000 & 0.826 & 0.016 \\
+Crop aggregation & Brier & -0.0014 & 4/2/3 & 0.688 & 1.000 & 0.948 & 0.016 \\
+Crop aggregation & accuracy & +0.0023 & 3/4/2 & 0.812 & 1.000 & 0.964 & 0.062 \\
+Crop aggregation & NLL & -0.0014 & 2/2/5 & 0.812 & 1.000 & 0.964 & 0.016 \\
+Calibration checkpoint & NLL & -0.0012 & 3/2/4 & 0.812 & 1.000 & 0.964 & 0.016 \\
+Seed ensemble$^{*}$ & ECE & +0.0021 & 4/0/5 & 0.820 & 1.000 & 0.964 & 0.004 \\
+Brier regularization & ECE & +0.0014 & 4/1/4 & 0.844 & 1.000 & 0.964 & 0.008 \\
+Teacher/student$^{*}$ & NLL & -0.0085 & 5/1/3 & 0.844 & 1.000 & 0.964 & 0.008 \\
+Crop aggregation & ECE & +0.0026 & 3/2/4 & 0.938 & 1.000 & 0.995 & 0.016 \\
+SWA/EMA & NLL & +0.0004 & 3/1/5 & 0.945 & 1.000 & 0.995 & 0.008 \\
+Teacher/student$^{*}$ & Brier & -0.0067 & 4/1/4 & 0.945 & 1.000 & 0.995 & 0.008 \\
+Augmentation$^{*}$ & ECE & +0.0031 & 2/4/3 & 1.000 & 1.000 & 1.000 & 0.062 \\
+SWA/EMA & Brier & +0.0008 & 3/1/5 & 1.000 & 1.000 & 1.000 & 0.008 \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\footnotesize $^{*}$ reported in the original manuscript.
+\end{table*}

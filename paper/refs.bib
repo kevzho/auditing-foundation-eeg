@@ -1,0 +1,337 @@
+% CalibMI — bibliography for the IEEE BigData 2026 High School Symposium paper
+% Style: IEEEtran.bst  (\bibliographystyle{IEEEtran} + \bibliography{refs})
+%
+% VERIFICATION STATUS
+%   [V]  metadata fetched from arXiv API or copied from an existing compiled
+%        bibliography in this repo — safe to cite as written
+%   [?]  written from standard knowledge of the literature; CHECK volume/page/
+%        year against the publisher page before submitting
+%   [TODO] not yet retrieved — must be filled before compile
+%
+% ---------------------------------------------------------------------------
+% FOUNDATION MODELS  (the two models audited)
+% ---------------------------------------------------------------------------
+
+% [V] arXiv API, 2026-09-16
+@inproceedings{wang2025cbramod,
+  author    = {Jiquan Wang and Sha Zhao and Zhiling Luo and Yangxuan Zhou and
+               Haiteng Jiang and Shijian Li and Tao Li and Gang Pan},
+  title     = {{CBraMod}: A Criss-Cross Brain Foundation Model for {EEG} Decoding},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  eprint    = {2412.07236},
+  archivePrefix = {arXiv}
+}
+
+% [V] arXiv API, 2026-09-16
+@inproceedings{jiang2024labram,
+  author    = {Wei-Bang Jiang and Li-Ming Zhao and Bao-Liang Lu},
+  title     = {Large Brain Model for Learning Generic Representations with
+               Tremendous {EEG} Data in {BCI}},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  eprint    = {2405.18765},
+  archivePrefix = {arXiv}
+}
+
+% ---------------------------------------------------------------------------
+% EEG FOUNDATION-MODEL BENCHMARKS AND AUDITS
+% Related work MUST engage these (scope doc 10.1).
+% All [V] — title/authors/date fetched from arxiv.org/abs, 2026-09-16.
+% ---------------------------------------------------------------------------
+
+% [V]
+@misc{wu2025adabrainbench,
+  author = {Jiamin Wu and Zichen Ren and Junyu Wang and Pengyu Zhu and
+            Yonghao Song and Mianxin Liu and Qihao Zheng and Lei Bai and
+            Wanli Ouyang and Chunfeng Song},
+  title  = {{AdaBrain-Bench}: Benchmarking Brain Foundation Models for
+            Brain-Computer Interface Applications},
+  year   = {2025}, eprint = {2507.09882}, archivePrefix = {arXiv}
+}
+
+% [V]
+@misc{xiong2025eegfmbench,
+  author = {Wei Xiong and Jiangtong Li and Jie Li and Kun Zhu and Changjun Jiang},
+  title  = {{EEG-FM-Bench}: A Comprehensive Benchmark for the Systematic
+            Evaluation and Diagnostic Analyses of {EEG} Foundation Models},
+  year   = {2025}, eprint = {2508.17742}, archivePrefix = {arXiv}
+}
+
+% [V]
+@misc{shen2026brain4fms,
+  author = {Fanqi Shen and Enhong Yang and Jiahe Li and Junru Hong and
+            Xiaoran Pan and Zhizhang Yuan and Meng Li and Yang Yang},
+  title  = {{Brain4FMs}: A Benchmark of Foundation Models for Electrical
+            Brain Signal},
+  year   = {2026}, eprint = {2602.11558}, archivePrefix = {arXiv}
+}
+
+% [V] from-scratch matched architectures under a shared optimiser recipe
+@misc{banville2026neuralbench,
+  author = {Hubert Banville and St{\'e}phane d'Ascoli and Simon Dahan and
+            J{\'e}r{\'e}my Rapin and Marl{\`e}ne Careil and Yohann Benchetrit and
+            Jarod L{\'e}vy and Saarang Panchavati and Antoine Ratouchniak and
+            Mingfang Zhang and Elisa Cascardi and Katelyn Begany and
+            Teon Brooks and Jean-R{\'e}mi King},
+  title  = {{NeuralBench}: A Unifying Framework to Benchmark {NeuroAI} Models},
+  year   = {2026}, eprint = {2605.08495}, archivePrefix = {arXiv}
+}
+
+% [V] runs a random-init control on CBraMod (clinical tasks); pretrained ahead
+%     by 0.067 / 0.023 / 0.024 AUROC on Bonn, TUAB, NMT
+@misc{kontras2026neuroatlas,
+  author = {Konstantinos Kontras and Trui Osselaer and Stylianos G. Mouslech and
+            Angeliki-Ilektra Karaiskou and Guido Gagliardi and Thomas Strypsteen and
+            Mohammad Hossein Badiei and Anku Rani and Maarten Vanmarcke and
+            Miguel Bhagubai and Chanakya Ekbote and Jaedong Hwang and
+            Christos Chatzichristos and Paul Pu Liang and Maarten De Vos},
+  title  = {{NeuroAtlas}: Benchmarking Foundation Models for Clinical {EEG}
+            and Brain-Computer Interfaces},
+  year   = {2026}, eprint = {2605.14698}, archivePrefix = {arXiv}
+}
+
+% [V]
+@misc{lu2026omnieegbench,
+  author = {Ziling Lu and Zongsheng Li and Xinke Shen and Kexin Lou and
+            Yingyue Xin and Xiaoqi Chen and Shinan Wang and Xiang Chen and
+            Jiahao Fan and Chenyu Huang and Xin Xu and Zhoujie Hou and
+            Chen Wei and Quanying Liu},
+  title  = {{OmniEEG-Bench}: A Standardized Evaluation Benchmark for {EEG}
+            Foundation Models},
+  year   = {2026}, eprint = {2606.00815}, archivePrefix = {arXiv}
+}
+
+% [V] CLOSEST PRIOR WORK — a negative-control protocol for EEG-FM benchmarks.
+%     Matched random-init encoder, 3 seeds; random init EXCEEDED pretrained
+%     REVE on CAUEEG. Related work must engage this directly, not in passing.
+@misc{zare2026negativecontrol,
+  author = {Marzieh Zare},
+  title  = {A Negative-Control Protocol for Clinical {EEG} Foundation-Model
+            Benchmarks: Dataset Identity and External-Cohort Stress Testing},
+  year   = {2026}, eprint = {2607.24519}, archivePrefix = {arXiv}
+}
+
+% ---------------------------------------------------------------------------
+% SUPERVISED BASELINES
+% ---------------------------------------------------------------------------
+
+% [V] carried from paper_calibration_generalization_scaffold.tex
+@article{schirrmeister2017deep,
+  author  = {Robin Tibor Schirrmeister and Jost Tobias Springenberg and
+             Lukas Dominique Josef Fiederer and Martin Glasstetter and
+             Katharina Eggensperger and Michael Tangermann and Frank Hutter and
+             Wolfram Burgard and Tonio Ball},
+  title   = {Deep Learning with Convolutional Neural Networks for {EEG}
+             Decoding and Visualization},
+  journal = {Human Brain Mapping},
+  volume  = {38}, number = {11}, pages = {5391--5420}, year = {2017}
+}
+
+% [V] carried from scaffold
+@article{lawhern2018eegnet,
+  author  = {Vernon J. Lawhern and Amelia J. Solon and Nicholas R. Waytowich and
+             Stephen M. Gordon and Chou P. Hung and Brent J. Lance},
+  title   = {{EEGNet}: A Compact Convolutional Neural Network for {EEG}-Based
+             Brain-Computer Interfaces},
+  journal = {Journal of Neural Engineering},
+  volume  = {15}, number = {5}, pages = {056013}, year = {2018}
+}
+
+% [V] dblp + IEEE, 2026-09-16
+@article{altaheri2023atcnet,
+  author  = {Hamdi Altaheri and Ghulam Muhammad and Mansour Alsulaiman},
+  title   = {Physics-Informed Attention Temporal Convolutional Network for
+             {EEG}-Based Motor Imagery Classification},
+  journal = {IEEE Transactions on Industrial Informatics},
+  volume  = {19}, number = {2}, pages = {2249--2258}, year = {2023},
+  doi     = {10.1109/TII.2022.3197419}
+}
+
+% [V] PubMed + IEEE, 2026-09-16
+@article{song2023conformer,
+  author  = {Yonghao Song and Qingqing Zheng and Bingchuan Liu and Xiaorong Gao},
+  title   = {{EEG} Conformer: Convolutional Transformer for {EEG} Decoding and
+             Visualization},
+  journal = {IEEE Transactions on Neural Systems and Rehabilitation Engineering},
+  volume  = {31}, pages = {710--719}, year = {2023},
+  doi     = {10.1109/TNSRE.2022.3230250}
+}
+
+% [V] carried from scaffold
+@article{ramoser2000csp,
+  author  = {Herbert Ramoser and Johannes M{\"u}ller-Gerking and Gert Pfurtscheller},
+  title   = {Optimal Spatial Filtering of Single Trial {EEG} During Imagined
+             Hand Movement},
+  journal = {IEEE Transactions on Rehabilitation Engineering},
+  volume  = {8}, number = {4}, pages = {441--446}, year = {2000}
+}
+
+% [?] verify
+@inproceedings{ang2008fbcsp,
+  author    = {Kai Keng Ang and Zheng Yang Chin and Haihong Zhang and Cuntai Guan},
+  title     = {Filter Bank Common Spatial Pattern ({FBCSP}) in Brain-Computer
+               Interface},
+  booktitle = {IEEE International Joint Conference on Neural Networks (IJCNN)},
+  pages     = {2390--2397}, year = {2008}
+}
+
+% ---------------------------------------------------------------------------
+% DATASETS
+% ---------------------------------------------------------------------------
+
+% [V] carried from scaffold
+@techreport{brunner2008graz,
+  author      = {Clemens Brunner and Robert Leeb and Gernot R. M{\"u}ller-Putz and
+                 Alois Schl{\"o}gl and Gert Pfurtscheller},
+  title       = {{BCI} Competition 2008 -- Graz Data Set A},
+  institution = {Graz University of Technology}, year = {2008}
+}
+
+% [V] carried from scaffold
+@article{tangermann2012competition,
+  author  = {Michael Tangermann and Klaus-Robert M{\"u}ller and Ad Aertsen and
+             Niels Birbaumer and Christoph Braun and Clemens Brunner and others},
+  title   = {Review of the {BCI} Competition {IV}},
+  journal = {Frontiers in Neuroscience}, volume = {6}, pages = {55}, year = {2012}
+}
+
+% [V] PubMed + DOI, 2026-09-20
+@article{leeb2007bnci004,
+  author  = {Robert Leeb and Felix Lee and Claudia Keinrath and Reinhold Scherer and
+             Horst Bischof and Gert Pfurtscheller},
+  title   = {Brain-Computer Communication: Motivation, Aim, and Impact of
+             Exploring a Virtual Apartment},
+  journal = {IEEE Transactions on Neural Systems and Rehabilitation Engineering},
+  volume  = {15}, number = {4}, pages = {473--482}, year = {2007},
+  doi     = {10.1109/TNSRE.2007.906956}
+}
+
+% [?] Lee2019 / OpenBMI — only needed if the n=54 arm is mentioned
+@article{lee2019openbmi,
+  author  = {Min-Ho Lee and O-Yeon Kwon and Yong-Jeong Kim and Hong-Kyung Kim and
+             Young-Eun Lee and John Williamson and Siamac Fazli and Seong-Whan Lee},
+  title   = {{EEG} Dataset and {OpenBMI} Toolbox for Three {BCI} Paradigms:
+             An Investigation into {BCI} Illiteracy},
+  journal = {GigaScience}, volume = {8}, number = {5}, pages = {giz002}, year = {2019}
+}
+
+% ---------------------------------------------------------------------------
+% CALIBRATION, SCORING, STATISTICS
+% ---------------------------------------------------------------------------
+
+% [V] carried from scaffold
+@inproceedings{guo2017calibration,
+  author    = {Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger},
+  title     = {On Calibration of Modern Neural Networks},
+  booktitle = {International Conference on Machine Learning (ICML)}, year = {2017}
+}
+
+% [V] carried from scaffold
+@article{brier1950verification,
+  author  = {Glenn W. Brier},
+  title   = {Verification of Forecasts Expressed in Terms of Probability},
+  journal = {Monthly Weather Review}, volume = {78}, number = {1},
+  pages   = {1--3}, year = {1950}
+}
+
+% [V] carried from scaffold
+@article{gneiting2007proper,
+  author  = {Tilmann Gneiting and Adrian E. Raftery},
+  title   = {Strictly Proper Scoring Rules, Prediction, and Estimation},
+  journal = {Journal of the American Statistical Association},
+  volume  = {102}, number = {477}, pages = {359--378}, year = {2007}
+}
+
+% [V] carried from scaffold
+@article{wilcoxon1945individual,
+  author  = {Frank Wilcoxon},
+  title   = {Individual Comparisons by Ranking Methods},
+  journal = {Biometrics Bulletin}, volume = {1}, number = {6},
+  pages   = {80--83}, year = {1945}
+}
+
+% [V] JRSS-B + DOI, 2026-09-20
+@article{benjamini1995fdr,
+  author  = {Yoav Benjamini and Yosef Hochberg},
+  title   = {Controlling the False Discovery Rate: A Practical and Powerful
+             Approach to Multiple Testing},
+  journal = {Journal of the Royal Statistical Society: Series B},
+  volume  = {57}, number = {1}, pages = {289--300}, year = {1995},
+  doi     = {10.1111/j.2517-6161.1995.tb02031.x}
+}
+
+% [V] carried from scaffold
+@inproceedings{lakshminarayanan2017deep,
+  author    = {Balaji Lakshminarayanan and Alexander Pritzel and Charles Blundell},
+  title     = {Simple and Scalable Predictive Uncertainty Estimation Using
+               Deep Ensembles},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2017}
+}
+
+% ---------------------------------------------------------------------------
+% TOOLING AND REPRODUCIBILITY
+% ---------------------------------------------------------------------------
+
+% [V] carried from scaffold
+@article{jayaram2018moabb,
+  author  = {Vinay Jayaram and Alexandre Barachant},
+  title   = {{MOABB}: Trustworthy Algorithm Benchmarking for {BCIs}},
+  journal = {Journal of Neural Engineering}, volume = {15}, number = {6},
+  pages   = {066011}, year = {2018}
+}
+
+% [?] verify
+@article{gramfort2013mne,
+  author  = {Alexandre Gramfort and Martin Luessi and Eric Larson and others},
+  title   = {{MEG} and {EEG} Data Analysis with {MNE-Python}},
+  journal = {Frontiers in Neuroscience}, volume = {7}, pages = {267}, year = {2013}
+}
+
+% [V] carried from scaffold
+@misc{chevallier2024reproducibility,
+  author = {Sylvain Chevallier and others},
+  title  = {The Largest {EEG}-Based {BCI} Reproducibility Study for Open Science},
+  year   = {2024}, eprint = {2404.15319}, archivePrefix = {arXiv}
+}
+
+% ---------------------------------------------------------------------------
+% PROTOCOL INCOMPARABILITY  (see docs/protocol_incomparability_note.md)
+% NOTE: cite the PUBLISHED version, not the SSRN preprint. Verify every
+% quotation against the published text before use.
+% ---------------------------------------------------------------------------
+
+% [V] DOI recorded in docs/protocol_incomparability_note.md
+@article{yu2022lffn,
+  author  = {Zhengqing Yu and Wei Chen},
+  title   = {Motor Imagery {EEG} Classification Algorithm Based on Improved
+             Lightweight Feature Fusion Network},
+  journal = {Biomedical Signal Processing and Control},
+  year    = {2022},
+  doi     = {10.1016/j.bspc.2022.103618}
+}
+
+% ---------------------------------------------------------------------------
+% BACKGROUND
+% ---------------------------------------------------------------------------
+
+% [V] carried from scaffold
+@article{pfurtscheller1999erd,
+  author  = {Gert Pfurtscheller and Fernando H. Lopes da Silva},
+  title   = {Event-Related {EEG/MEG} Synchronization and Desynchronization:
+             Basic Principles},
+  journal = {Clinical Neurophysiology}, volume = {110}, number = {11},
+  pages   = {1842--1857}, year = {1999}
+}
+
+% [V] carried from scaffold
+@article{lotte2018review,
+  author  = {Fabien Lotte and Laurent Bougrain and Andrzej Cichocki and
+             Maureen Clerc and Marco Congedo and Alain Rakotomamonjy and
+             Florian Yger},
+  title   = {A Review of Classification Algorithms for {EEG}-Based
+             Brain-Computer Interfaces: A 10 Year Update},
+  journal = {Journal of Neural Engineering}, volume = {15}, number = {3},
+  pages   = {031005}, year = {2018}
+}

@@ -1,0 +1,604 @@
+{
+  "chance_Brier": 0.75,
+  "chance_accuracy": 0.25,
+  "classes": [
+    "769",
+    "770",
+    "771",
+    "772"
+  ],
+  "dataset": "bci_iiia",
+  "dataset_label": "BCI_IIIa",
+  "experiments": {
+    "augmentation": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "stratified_trial_split_external_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.9890970587730408,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "best_light_augmentation",
+      "heldout_metrics": {
+        "Brier": 0.4286843433830379,
+        "ECE": 0.30068666468007194,
+        "NLL": 0.8022229624716581,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.42979030211837416,
+        "ECE": 0.27635328952899874,
+        "NLL": 0.8040119639292916,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5306964009370976,
+              "ECE": 0.40977152582405185,
+              "NLL": 0.8729794041084397,
+              "accuracy": 0.5625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 8
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.528139915582808,
+              "ECE": 0.4127962401027886,
+              "NLL": 0.8510981582608786,
+              "accuracy": 0.6875,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.05,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5827394849488402,
+              "ECE": 0.4192201777941318,
+              "NLL": 0.9668572811706385,
+              "accuracy": 0.4375,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.01,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5359161863339545,
+              "ECE": 0.4676615275986402,
+              "NLL": 0.8725327608860904,
+              "accuracy": 0.6875,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.03,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5766872594716136,
+              "ECE": 0.41643984878549284,
+              "NLL": 0.9262108754071243,
+              "accuracy": 0.5,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_augmentation": {
+          "channel_dropout": 0.0,
+          "freq_mask_frac": 0.0,
+          "noise_std": 0.0,
+          "time_shift": 8
+        },
+        "selection_rule": "validation_Brier_with_validation_accuracy_guardrail"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "stratified_trial_split_external_eval_final_report_only",
+        "selection_split": "stratified_trial_split_external_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.5285487097635133,
+        "ECE": 0.4118342630679735,
+        "NLL": 0.8510659226556514,
+        "accuracy": 0.6875,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.528139915582808,
+        "ECE": 0.4127962401027886,
+        "NLL": 0.8510981582608786,
+        "accuracy": 0.6875,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "baseline": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "stratified_trial_split_external_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.8822643160820007,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "baseline_ce_cropped_shallow_convnet",
+      "heldout_metrics": {
+        "Brier": 0.4650966403213356,
+        "ECE": 0.21637317891874194,
+        "NLL": 0.8829740094460816,
+        "accuracy": 0.6428571428571429,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.4687233931443946,
+        "ECE": 0.19366293209990348,
+        "NLL": 0.8839498616284862,
+        "accuracy": 0.6428571428571429,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "crop_audit": {
+          "crop_dimension_source": "stratified_trial_split_external_train_dimensions_and_predeclared_cli_grid_only",
+          "crop_sizes": [
+            384,
+            512,
+            640
+          ],
+          "crop_strides": [
+            128,
+            128,
+            128
+          ],
+          "crop_strides_normalized": [
+            128,
+            128,
+            128
+          ],
+          "crops_per_trial": 18,
+          "eval_labels_used_for_crop_or_aggregation_selection": false,
+          "eval_n_times_report_only": 1126,
+          "padded_to_n_times": 640,
+          "reference_n_times": 1126,
+          "reference_split": "stratified_trial_split_external_train",
+          "scales": [
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 7,
+              "effective_crop_size": 384,
+              "requested_crop_size": 384,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                512,
+                640,
+                742
+              ]
+            },
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 6,
+              "effective_crop_size": 512,
+              "requested_crop_size": 512,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                512,
+                614
+              ]
+            },
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 5,
+              "effective_crop_size": 640,
+              "requested_crop_size": 640,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                486
+              ]
+            }
+          ],
+          "validation_n_times": 1126
+        },
+        "headline_control": true,
+        "model": {
+          "architecture": {
+            "dropout": 0.5,
+            "max_norm": 0.0,
+            "temporal_filters": 16,
+            "temporal_kernel": 64
+          },
+          "augmentation": {
+            "channel_dropout": 0.0,
+            "freq_mask_frac": 0.0,
+            "noise_std": 0.0,
+            "time_shift": 0
+          },
+          "average_checkpoint": "none",
+          "checkpoint_eval_labels_used": false,
+          "checkpoint_rule": "val_loss",
+          "checkpoint_selection_split": "stratified_trial_split_external_validation",
+          "loss": {
+            "ce": true,
+            "lambda_brier": 0.0
+          },
+          "random_seed": 42
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "stratified_trial_split_external_eval_final_report_only",
+        "selection_split": "stratified_trial_split_external_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.534625816775762,
+        "ECE": 0.40350987761720164,
+        "NLL": 0.8694872578557095,
+        "accuracy": 0.5625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.5306964009370976,
+        "ECE": 0.40977152582405185,
+        "NLL": 0.8729794041084397,
+        "accuracy": 0.5625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "seed_ensemble": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "stratified_trial_split_external_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.8441197872161865,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "seed_ensemble",
+      "heldout_metrics": {
+        "Brier": 0.38432648497671873,
+        "ECE": 0.22519987038612535,
+        "NLL": 0.7186645270847775,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.3989442060711347,
+        "ECE": 0.32067198539204156,
+        "NLL": 0.7447489713677531,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "aggregation": "average_trial_level_logits_across_seeds",
+        "seeds": [
+          42,
+          43,
+          44
+        ]
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "stratified_trial_split_external_eval_final_report_only",
+        "selection_split": "stratified_trial_split_external_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.49550507368098357,
+        "ECE": 0.4294474219167379,
+        "NLL": 0.816632149268445,
+        "accuracy": 0.625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.4958524342028503,
+        "ECE": 0.4422877501607113,
+        "NLL": 0.8232230824143167,
+        "accuracy": 0.625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "teacher_student_mixture": {
+      "experiment": "teacher_student_probability_mixing",
+      "heldout_metrics": {
+        "Brier": 0.41973972065514625,
+        "ECE": 0.20594094641558133,
+        "NLL": 0.7593496495189463,
+        "accuracy": 0.7380952380952381,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "alpha_grid": [
+          {
+            "alpha": 0.0,
+            "validation_Brier": 0.6316364164817179,
+            "validation_accuracy": 0.4375
+          },
+          {
+            "alpha": 0.05,
+            "validation_Brier": 0.6138405764349757,
+            "validation_accuracy": 0.4375
+          },
+          {
+            "alpha": 0.1,
+            "validation_Brier": 0.5974074006052276,
+            "validation_accuracy": 0.5
+          },
+          {
+            "alpha": 0.15,
+            "validation_Brier": 0.5823368889924736,
+            "validation_accuracy": 0.5
+          },
+          {
+            "alpha": 0.2,
+            "validation_Brier": 0.5686290415967139,
+            "validation_accuracy": 0.5
+          },
+          {
+            "alpha": 0.25,
+            "validation_Brier": 0.5562838584179484,
+            "validation_accuracy": 0.5625
+          },
+          {
+            "alpha": 0.3,
+            "validation_Brier": 0.5453013394561769,
+            "validation_accuracy": 0.5625
+          },
+          {
+            "alpha": 0.35,
+            "validation_Brier": 0.5356814847113995,
+            "validation_accuracy": 0.5625
+          },
+          {
+            "alpha": 0.4,
+            "validation_Brier": 0.5274242941836164,
+            "validation_accuracy": 0.5625
+          },
+          {
+            "alpha": 0.45,
+            "validation_Brier": 0.5205297678728273,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.5,
+            "validation_Brier": 0.5149979057790325,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.55,
+            "validation_Brier": 0.5108287079022318,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.6,
+            "validation_Brier": 0.5080221742424252,
+            "validation_accuracy": 0.6875
+          },
+          {
+            "alpha": 0.65,
+            "validation_Brier": 0.5065783047996127,
+            "validation_accuracy": 0.6875
+          },
+          {
+            "alpha": 0.7,
+            "validation_Brier": 0.5064970995737945,
+            "validation_accuracy": 0.6875
+          },
+          {
+            "alpha": 0.75,
+            "validation_Brier": 0.5077785585649703,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.8,
+            "validation_Brier": 0.5104226817731403,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.85,
+            "validation_Brier": 0.5144294691983046,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.9,
+            "validation_Brier": 0.5197989208404629,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.95,
+            "validation_Brier": 0.5265310366996154,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 1.0,
+            "validation_Brier": 0.534625816775762,
+            "validation_accuracy": 0.5625
+          }
+        ],
+        "comparators": {
+          "calibrated_student": {
+            "heldout": {
+              "Brier": 0.4650966403213356,
+              "ECE": 0.21637317891874194,
+              "NLL": 0.8829740094460816,
+              "accuracy": 0.6428571428571429,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.534625816775762,
+              "ECE": 0.40350987761720164,
+              "NLL": 0.8694872578557095,
+              "accuracy": 0.5625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          "matched_raw_student": {
+            "heldout": {
+              "Brier": 0.4687233931443946,
+              "ECE": 0.19366293209990348,
+              "NLL": 0.8839498616284862,
+              "accuracy": 0.6428571428571429,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.5306964009370976,
+              "ECE": 0.40977152582405185,
+              "NLL": 0.8729794041084397,
+              "accuracy": 0.5625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          "teacher_alone": {
+            "heldout": {
+              "Brier": 0.486340757601613,
+              "ECE": 0.24273247300043924,
+              "NLL": 0.8655411572484925,
+              "accuracy": 0.6190476190476191,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.6316364164817179,
+              "ECE": 0.37949848154536425,
+              "NLL": 1.1057466254614114,
+              "accuracy": 0.4375,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        },
+        "selected_alpha": 0.7,
+        "teacher": "tangent_logreg"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "stratified_trial_split_external_eval_final_report_only",
+        "selection_split": "stratified_trial_split_external_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.5064970995737945,
+        "ECE": 0.45892646082333727,
+        "NLL": 0.8702970641010415,
+        "accuracy": 0.6875,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    }
+  },
+  "n_classes": 4,
+  "paths": {
+    "gdf": "data/BCICIV_3a_gdf/l1b.gdf"
+  },
+  "protocol": {
+    "allow_stratified_external_split": true,
+    "chance_Brier": 0.75,
+    "chance_accuracy": 0.25,
+    "classes": [
+      "769",
+      "770",
+      "771",
+      "772"
+    ],
+    "eval_class_counts": {
+      "0": 10,
+      "1": 11,
+      "2": 11,
+      "3": 10
+    },
+    "eval_labels_used_for": "final_metrics_only",
+    "eval_labels_used_for_selection": false,
+    "heldout_rule": "deterministic stratified held-out trials from the single labeled GDF",
+    "n_classes": 4,
+    "n_eval": 42,
+    "n_train": 62,
+    "n_validation": 16,
+    "protocol_name": "stratified_trial_split_external",
+    "source_split": "single_labeled_gdf_stratified_trial_split",
+    "split_seed": 2026,
+    "train_class_counts": {
+      "0": 16,
+      "1": 15,
+      "2": 15,
+      "3": 16
+    },
+    "validation_class_counts": {
+      "0": 4,
+      "1": 4,
+      "2": 4,
+      "3": 4
+    },
+    "validation_rule": "deterministic stratified split from non-eval development trials"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "split": {
+    "eval_labels_used_for": "final_metrics_only",
+    "eval_split": "stratified_trial_split_external_eval",
+    "fit_split": "stratified_trial_split_external_train",
+    "stratified": true,
+    "validation_split": "stratified_trial_split_external_validation"
+  },
+  "subject": "l1b",
+  "validation_discipline": {
+    "eval_labels_used_for_selection": false,
+    "heldout_labels_used_for": "final_heldout_metrics_only",
+    "heldout_split": "stratified_trial_split_external_eval_final_report_only",
+    "selection_split": "stratified_trial_split_external_validation",
+    "train_split": "stratified_trial_split_external_train"
+  }
+}

@@ -1,0 +1,3 @@
+dataset,dataset_label,subject,n_classes,experiment_key,experiment,val_accuracy,val_Brier,val_ECE,val_NLL,heldout_accuracy,heldout_Brier,heldout_ECE,heldout_NLL,chance_accuracy,chance_Brier,selection_split,eval_labels_used_for_selection
+bci4_2a,BCI_IV_2a,1,4,baseline,baseline_ce_cropped_shallow_convnet,0.5517241379310345,0.5514922763126779,0.17505889088650076,0.9361136544885782,0.53125,0.5769132426960583,0.11654288238559607,0.9772399150171461,0.25,0.75,A0xT_validation,False
+bci4_2a,BCI_IV_2a,1,4,ea_seed_ensemble,ea_seed_ensemble,0.5517241379310345,0.5407353114032543,0.17805998310234034,0.913417491837787,0.5347222222222222,0.5661586409875587,0.11874018776765706,0.9522614768640195,0.25,0.75,A0xT_validation,False

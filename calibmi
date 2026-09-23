@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# CalibMI command-line entry point.
+#
+#   ./calibmi <command>
+#
+# Commands that need only the artifacts in results/ are marked [offline].
+# Commands that need the raw EEG datasets on disk are marked [raw].
+set -euo pipefail
+cd "$(dirname "$0")"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-$PWD/.mplconfig}"
+PY="${PYTHON:-python}"
+
+usage() {
+  cat <<'USAGE'
+CalibMI
+
+  ./calibmi check        [offline] verify the Python environment imports
+  ./calibmi audit        [offline] leakage audit: refuse any artifact whose
+                                   eval_labels_used_for_selection is set or missing
+  ./calibmi report       [offline] regenerate results/.../fm_audit/REPORT.md
+  ./calibmi decompose    [offline] regenerate the matched-input decomposition
+  ./calibmi multiplicity [offline] regenerate the multiplicity tables
+  ./calibmi readout      [offline] rebuild merged comparisons, paired deltas,
+                                   bootstrap CIs and Wilcoxon tests
+  ./calibmi figures      [offline] protocol schematic and learning curves
+  ./calibmi manifest     [offline] SHA256 reproducibility manifest
+  ./calibmi tables       [offline] audit + report + decompose + multiplicity + manifest
+
+  ./calibmi smoke        [raw]     short code-path check before long runs
+  ./calibmi full         [raw]     full validation-locked retraining (slow)
+  ./calibmi reliability  [raw]     reliability diagrams from per-trial probabilities
+
+Per-trial probability archives are not in this repository because of their size.
+See README.md for the Zenodo record; unpack it into results/ before running
+`reliability`.
+USAGE
+}
+
+case "${1:-}" in
+  check)
+    $PY -c "import mne, moabb, sklearn, scipy, pandas; print('core ok')"
+    $PY -c "import torch; print('torch', torch.__version__)"
+    ;;
+  audit)        $PY src/scripts/audit_leakage_fields.py --results-dir results ;;
+  report)       $PY src/scripts/make_fm_audit_report.py ;;
+  decompose)    $PY src/scripts/make_preprocessing_decomposition.py ;;
+  multiplicity) $PY src/scripts/make_multiplicity_table.py ;;
+  readout)      bash reproducibility/01_readout_from_saved_results.sh ;;
+  figures)
+    bash reproducibility/04_protocol_schematic.sh
+    $PY src/scripts/make_learning_curve_figure.py || echo "learning curves need results/fm_probe_curves"
+    ;;
+  manifest)
+    $PY src/scripts/make_reproducibility_manifest.py \
+        --results-dir results --out results/reproducibility_manifest.json
+    ;;
+  tables)
+    "$0" audit && "$0" report && "$0" decompose && "$0" multiplicity && "$0" manifest
+    echo "tables rebuilt from saved artifacts; no model was retrained."
+    ;;
+  smoke)        bash reproducibility/00_smoke_test.sh ;;
+  full)         bash reproducibility/02_full_validation_locked_runs.sh ;;
+  reliability)  bash reproducibility/03_reliability_figures_from_probabilities.sh ;;
+  ""|-h|--help|help) usage ;;
+  *) echo "unknown command: $1" >&2; echo; usage; exit 2 ;;
+esac

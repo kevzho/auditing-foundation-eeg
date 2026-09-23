@@ -1,0 +1,21 @@
+\section{Limitations}
+
+Two foundation models of the four we attempted, for the reasons given in
+% [UNSCOPE] "two datasets" -> three once results_n54.tex lands.
+Section~\ref{sec:design}. Two datasets, one of which has three electrodes and
+is therefore a harder rather than neutral setting for encoders pretrained on
+dense montages. Three seeds on the decisive comparison and one elsewhere;
+frozen-probe and LaBraM arms are single-seed. Nine subjects, at which the
+smallest attainable two-sided Wilcoxon $p$ is $0.0039$ --- several results here
+sit at that floor, and the design is consequently well powered to detect a
+large deficit and poorly powered to certify a small improvement. The
+matched-input control searched two architectural hyperparameters per subject,
+so the supervised broadband arm is a lower bound on what a fully tuned
+comparator would achieve, and a stronger comparator would widen the deficit
+rather than narrow it.
+
+\section*{Reproducibility}
+Code, per-subject result artifacts, per-trial probability files, and a
+manifest with SHA256 hashes and pinned library versions accompany this paper.
+Every table is regenerated from those artifacts by a single script; no number
+here was transcribed by hand.

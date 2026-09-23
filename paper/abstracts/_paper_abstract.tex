@@ -1,0 +1,34 @@
+% [YOURS] — write last, in your own voice, after the results are on the page.
+% The skeleton below is the fact set, not the prose. Your July timeline set the
+% standard: "a human-rewritten abstract ... no AI-scaffold phrasing."
+\begin{abstract}
+Pretrained EEG foundation models are increasingly proposed as general-purpose
+encoders for brain--computer interfaces, but published audits disagree about
+whether their pretraining transfers. We audit two such models, LaBraM and
+CBraMod, on motor imagery under a \emph{validation-locked} protocol: every
+tunable choice --- preprocessing, architecture, stopping epoch, temperature,
+and which method is reported --- is made on training-session data alone and
+held-out labels are read once, a constraint on model \emph{selection} rather
+than on model parameters, enforced by the result format rather than by author
+discipline. On four-class
+BCI~IV-2a, every supervised comparator we test outperforms every
+foundation-model configuration, including the strongest fine-tuning recipe
+selected on validation. We then run the matched-input control that such
+comparisons require, retraining each supervised comparator on the identical
+broadband arrays the foundation models consume, and report the paper's main
+methodological result: the measured preprocessing term differs in sign across
+comparator architectures, helping one by 0.078 accuracy while costing another
+0.088, though no individual term reaches significance after correction at
+$n=9$. The term is therefore not reliably estimable from any single
+architecture, which is how such controls are ordinarily run. The deficit is
+task-dependent: on two-class BNCI2014\_004 we could not detect a
+difference between a fine-tuned CBraMod and the supervised arms. Calibration is the one dimension on
+which the foundation models hold up; after a single validation-fitted
+temperature their held-out calibration error lands in the supervised range
+despite far lower accuracy.
+\end{abstract}
+
+\begin{IEEEkeywords}
+EEG, brain--computer interface, foundation models, motor imagery, model
+evaluation, calibration
+\end{IEEEkeywords}

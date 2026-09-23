@@ -1,0 +1,1538 @@
+{
+  "chance_Brier": 0.75,
+  "chance_accuracy": 0.25,
+  "classes": [
+    769,
+    770,
+    771,
+    772
+  ],
+  "dataset": "bci4_2a",
+  "dataset_label": "BCI_IV_2a",
+  "experiments": {
+    "architecture": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.6166151762008667,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "best_shallow_architecture_variant",
+      "heldout_metrics": {
+        "Brier": 0.37141676678070645,
+        "ECE": 0.07595776797104868,
+        "NLL": 0.6572988154485295,
+        "accuracy": 0.7537878787878788,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.37690272290086463,
+        "ECE": 0.1034740722102562,
+        "NLL": 0.6796594919456884,
+        "accuracy": 0.7537878787878788,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "architecture": {
+              "dropout": 0.5,
+              "max_norm": 0.0,
+              "temporal_filters": 16,
+              "temporal_kernel": 64
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "architecture": {
+              "dropout": 0.5,
+              "max_norm": 0.0,
+              "temporal_filters": 16,
+              "temporal_kernel": 32
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5143386036787118,
+              "ECE": 0.16626989573824674,
+              "NLL": 0.9385042042743114,
+              "accuracy": 0.625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "architecture": {
+              "dropout": 0.35,
+              "max_norm": 0.0,
+              "temporal_filters": 16,
+              "temporal_kernel": 64
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.4660919150144771,
+              "ECE": 0.27046843937223847,
+              "NLL": 0.8477828134072823,
+              "accuracy": 0.6607142857142857,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "architecture": {
+              "dropout": 0.5,
+              "max_norm": 2.0,
+              "temporal_filters": 16,
+              "temporal_kernel": 64
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "architecture": {
+              "dropout": 0.5,
+              "max_norm": 0.0,
+              "temporal_filters": 24,
+              "temporal_kernel": 96
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.4457882558155341,
+              "ECE": 0.19565562917955148,
+              "NLL": 0.8100577739004837,
+              "accuracy": 0.6964285714285714,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_architecture": {
+          "dropout": 0.5,
+          "max_norm": 0.0,
+          "temporal_filters": 24,
+          "temporal_kernel": 96
+        },
+        "selection_rule": "per_subject_A0xT_validation_Brier_tie_break_validation_accuracy"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.41784238885097685,
+        "ECE": 0.13631326989774306,
+        "NLL": 0.7577020492522257,
+        "accuracy": 0.6964285714285714,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.4457882558155341,
+        "ECE": 0.19565562917955148,
+        "NLL": 0.8100577739004837,
+        "accuracy": 0.6964285714285714,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "augmentation": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.5902311205863953,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "best_light_augmentation",
+      "heldout_metrics": {
+        "Brier": 0.28952470722474555,
+        "ECE": 0.06116642762546304,
+        "NLL": 0.5185679059047669,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.33142338777169983,
+        "ECE": 0.16686687128217453,
+        "NLL": 0.6212431918903942,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 8
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5105968902243275,
+              "ECE": 0.23479439361674936,
+              "NLL": 0.9253659185566454,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.05,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5149780706750321,
+              "ECE": 0.19465514599039704,
+              "NLL": 0.9336133114964245,
+              "accuracy": 0.625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.0,
+              "noise_std": 0.01,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5050875754856877,
+              "ECE": 0.26974447261045037,
+              "NLL": 0.9028742174460886,
+              "accuracy": 0.6607142857142857,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "augmentation": {
+              "channel_dropout": 0.0,
+              "freq_mask_frac": 0.03,
+              "noise_std": 0.0,
+              "time_shift": 0
+            },
+            "validation_metrics_raw": {
+              "Brier": 0.5111777064291028,
+              "ECE": 0.24716155289316175,
+              "NLL": 0.9205214803123825,
+              "accuracy": 0.6964285714285714,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_augmentation": {
+          "channel_dropout": 0.0,
+          "freq_mask_frac": 0.0,
+          "noise_std": 0.01,
+          "time_shift": 0
+        },
+        "selection_rule": "validation_Brier_with_validation_accuracy_guardrail"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.4790741305710869,
+        "ECE": 0.20656485434165384,
+        "NLL": 0.8462673416620918,
+        "accuracy": 0.6607142857142857,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.5050875754856877,
+        "ECE": 0.26974447261045037,
+        "NLL": 0.9028742174460886,
+        "accuracy": 0.6607142857142857,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "baseline": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.5725069046020508,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "baseline_ce_cropped_shallow_convnet",
+      "heldout_metrics": {
+        "Brier": 0.33217654211964903,
+        "ECE": 0.08182486034272167,
+        "NLL": 0.5969126745237632,
+        "accuracy": 0.7689393939393939,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.3738553149083527,
+        "ECE": 0.16379442939619274,
+        "NLL": 0.6891319803156859,
+        "accuracy": 0.7689393939393939,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "crop_audit": {
+          "crop_dimension_source": "A0xT_train_dimensions_and_predeclared_cli_grid_only",
+          "crop_sizes": [
+            384,
+            512,
+            640
+          ],
+          "crop_strides": [
+            128,
+            128,
+            128
+          ],
+          "crop_strides_normalized": [
+            128,
+            128,
+            128
+          ],
+          "crops_per_trial": 18,
+          "eval_labels_used_for_crop_or_aggregation_selection": false,
+          "eval_n_times_report_only": 1126,
+          "padded_to_n_times": 640,
+          "reference_n_times": 1126,
+          "reference_split": "A0xT_train",
+          "scales": [
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 7,
+              "effective_crop_size": 384,
+              "requested_crop_size": 384,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                512,
+                640,
+                742
+              ]
+            },
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 6,
+              "effective_crop_size": 512,
+              "requested_crop_size": 512,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                512,
+                614
+              ]
+            },
+            {
+              "crop_stride": 128,
+              "crops_per_trial": 5,
+              "effective_crop_size": 640,
+              "requested_crop_size": 640,
+              "starts": [
+                0,
+                128,
+                256,
+                384,
+                486
+              ]
+            }
+          ],
+          "validation_n_times": 1126
+        },
+        "headline_control": true,
+        "model": {
+          "architecture": {
+            "dropout": 0.5,
+            "max_norm": 0.0,
+            "temporal_filters": 16,
+            "temporal_kernel": 64
+          },
+          "augmentation": {
+            "channel_dropout": 0.0,
+            "freq_mask_frac": 0.0,
+            "noise_std": 0.0,
+            "time_shift": 0
+          },
+          "average_checkpoint": "none",
+          "checkpoint_eval_labels_used": false,
+          "checkpoint_rule": "val_loss",
+          "checkpoint_selection_split": "A0xT_validation",
+          "loss": {
+            "ce": true,
+            "lambda_brier": 0.0
+          },
+          "random_seed": 42
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.48000485600425197,
+        "ECE": 0.16553908432867767,
+        "NLL": 0.8520898882677973,
+        "accuracy": 0.6071428571428571,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.5055500406832566,
+        "ECE": 0.18442338969153949,
+        "NLL": 0.9145746285989385,
+        "accuracy": 0.6071428571428571,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "brier_loss": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.5716404914855957,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "ce_plus_brier_regularization",
+      "heldout_metrics": {
+        "Brier": 0.3297534674963531,
+        "ECE": 0.0911744011311676,
+        "NLL": 0.5917160972268195,
+        "accuracy": 0.7803030303030303,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.3719863482804157,
+        "ECE": 0.18441172106695697,
+        "NLL": 0.6861219324280019,
+        "accuracy": 0.7803030303030303,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "audit": {
+              "architecture": {
+                "dropout": 0.5,
+                "max_norm": 0.0,
+                "temporal_filters": 16,
+                "temporal_kernel": 64
+              },
+              "augmentation": {
+                "channel_dropout": 0.0,
+                "freq_mask_frac": 0.0,
+                "noise_std": 0.0,
+                "time_shift": 0
+              },
+              "average_checkpoint": "none",
+              "checkpoint_eval_labels_used": false,
+              "checkpoint_rule": "val_loss",
+              "checkpoint_selection_split": "A0xT_validation",
+              "loss": {
+                "ce": true,
+                "lambda_brier": 0.0
+              },
+              "random_seed": 42
+            },
+            "lambda_brier": 0.0,
+            "validation_metrics_raw": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "audit": {
+              "architecture": {
+                "dropout": 0.5,
+                "max_norm": 0.0,
+                "temporal_filters": 16,
+                "temporal_kernel": 64
+              },
+              "augmentation": {
+                "channel_dropout": 0.0,
+                "freq_mask_frac": 0.0,
+                "noise_std": 0.0,
+                "time_shift": 0
+              },
+              "average_checkpoint": "none",
+              "checkpoint_eval_labels_used": false,
+              "checkpoint_rule": "val_loss",
+              "checkpoint_selection_split": "A0xT_validation",
+              "loss": {
+                "ce": true,
+                "lambda_brier": 0.02
+              },
+              "random_seed": 42
+            },
+            "lambda_brier": 0.02,
+            "validation_metrics_raw": {
+              "Brier": 0.5054313128359891,
+              "ECE": 0.193867716386755,
+              "NLL": 0.9143337341235226,
+              "accuracy": 0.625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "audit": {
+              "architecture": {
+                "dropout": 0.5,
+                "max_norm": 0.0,
+                "temporal_filters": 16,
+                "temporal_kernel": 64
+              },
+              "augmentation": {
+                "channel_dropout": 0.0,
+                "freq_mask_frac": 0.0,
+                "noise_std": 0.0,
+                "time_shift": 0
+              },
+              "average_checkpoint": "none",
+              "checkpoint_eval_labels_used": false,
+              "checkpoint_rule": "val_loss",
+              "checkpoint_selection_split": "A0xT_validation",
+              "loss": {
+                "ce": true,
+                "lambda_brier": 0.05
+              },
+              "random_seed": 42
+            },
+            "lambda_brier": 0.05,
+            "validation_metrics_raw": {
+              "Brier": 0.5051502799972037,
+              "ECE": 0.21169158827242535,
+              "NLL": 0.9140138004098829,
+              "accuracy": 0.6428571428571429,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "audit": {
+              "architecture": {
+                "dropout": 0.5,
+                "max_norm": 0.0,
+                "temporal_filters": 16,
+                "temporal_kernel": 64
+              },
+              "augmentation": {
+                "channel_dropout": 0.0,
+                "freq_mask_frac": 0.0,
+                "noise_std": 0.0,
+                "time_shift": 0
+              },
+              "average_checkpoint": "none",
+              "checkpoint_eval_labels_used": false,
+              "checkpoint_rule": "val_loss",
+              "checkpoint_selection_split": "A0xT_validation",
+              "loss": {
+                "ce": true,
+                "lambda_brier": 0.1
+              },
+              "random_seed": 42
+            },
+            "lambda_brier": 0.1,
+            "validation_metrics_raw": {
+              "Brier": 0.5049023226516215,
+              "ECE": 0.19384283510735806,
+              "NLL": 0.9138408848263426,
+              "accuracy": 0.625,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_lambda": 0.1,
+        "selection_rule": "lowest_A0xT_validation_Brier_with_validation_accuracy_not_below_pure_CE_when_available"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.4793026641997042,
+        "ECE": 0.17480886504863485,
+        "NLL": 0.8509797893596769,
+        "accuracy": 0.625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.5049023226516215,
+        "ECE": 0.19384283510735806,
+        "NLL": 0.9138408848263426,
+        "accuracy": 0.625,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "calibration_checkpoint": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.5104626417160034,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "calibration_aware_checkpointing",
+      "heldout_metrics": {
+        "Brier": 0.32713784266323365,
+        "ECE": 0.081118755164972,
+        "NLL": 0.5907050523937752,
+        "accuracy": 0.75,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.39487749131420763,
+        "ECE": 0.20678324503399775,
+        "NLL": 0.73383278383881,
+        "accuracy": 0.75,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "checkpoint_selection": {
+          "epoch": 22,
+          "lr": 0.0007033683215379002,
+          "train_brier_loss": 0.5146431603431701,
+          "train_ce_loss": 0.9437136492729187,
+          "train_loss": 0.9437136492729187,
+          "val_accuracy": 0.7142857142857143,
+          "val_brier": 0.5417004432309822,
+          "val_brier_se": 0.03662027168256397,
+          "val_loss": 0.9844993352890015
+        },
+        "model": {
+          "architecture": {
+            "dropout": 0.5,
+            "max_norm": 0.0,
+            "temporal_filters": 16,
+            "temporal_kernel": 64
+          },
+          "augmentation": {
+            "channel_dropout": 0.0,
+            "freq_mask_frac": 0.0,
+            "noise_std": 0.0,
+            "time_shift": 0
+          },
+          "average_checkpoint": "none",
+          "checkpoint_eval_labels_used": false,
+          "checkpoint_rule": "calibration_aware",
+          "checkpoint_selection_split": "A0xT_validation",
+          "loss": {
+            "ce": true,
+            "lambda_brier": 0.0
+          },
+          "random_seed": 42
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.4906801421690027,
+        "ECE": 0.20661471384005384,
+        "NLL": 0.9037057543748396,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.5417004432309822,
+        "ECE": 0.25654442544244077,
+        "NLL": 0.9844993349904565,
+        "accuracy": 0.7142857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "calibration_grid": {
+      "experiment": "posthoc_calibration_grid",
+      "heldout_metrics": {
+        "Brier": 0.3182905918937178,
+        "ECE": 0.09646967048782652,
+        "NLL": 0.5765870097953508,
+        "accuracy": 0.7689393939393939,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "eval_labels_used_for_selection": false,
+            "fit_split": "A0xT_validation",
+            "heldout_metrics": {
+              "Brier": 0.33217654211964903,
+              "ECE": 0.08182486034272167,
+              "NLL": 0.5969126745237632,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "scalar_temperature",
+            "params": {
+              "temperature": 0.5725069046020508,
+              "temperature_at_upper_clamp": false
+            },
+            "validation_metrics": {
+              "Brier": 0.48000485600425197,
+              "ECE": 0.16553908432867767,
+              "NLL": 0.8520898882677973,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "eval_labels_used_for_selection": false,
+            "fit_split": "A0xT_validation",
+            "heldout_metrics": {
+              "Brier": 0.2945263183514759,
+              "ECE": 0.069853460282672,
+              "NLL": 0.5321351262515771,
+              "accuracy": 0.7916666666666666,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "vector_temperature",
+            "params": {
+              "temperatures": [
+                0.28599435091018677,
+                0.6910923719406128,
+                0.7838633060455322,
+                0.7944248914718628
+              ]
+            },
+            "validation_metrics": {
+              "Brier": 0.4655881727857209,
+              "ECE": 0.19494498690754197,
+              "NLL": 0.8016605637995463,
+              "accuracy": 0.6607142857142857,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "eval_labels_used_for_selection": false,
+            "fit_split": "A0xT_validation",
+            "heldout_metrics": {
+              "Brier": 0.3182905918937178,
+              "ECE": 0.09646967048782652,
+              "NLL": 0.5765870097953508,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "dirichlet_calibration",
+            "params": {
+              "coef": [
+                [
+                  1.5902636114689659,
+                  -0.3906274556714548,
+                  -0.5705592271404498,
+                  -0.5466192797483358
+                ],
+                [
+                  -0.6883383550015219,
+                  0.8803456679699563,
+                  -0.1515700333438037,
+                  -0.21507970917895763
+                ],
+                [
+                  -0.453183625049753,
+                  -0.10430954246298697,
+                  0.6841033748107666,
+                  -0.1680567275510337
+                ],
+                [
+                  -0.4487416314176968,
+                  -0.38540866983551814,
+                  0.03802588567348653,
+                  0.9297557164783273
+                ]
+              ],
+              "intercept": [
+                0.02127394219707162,
+                -0.23313658215815342,
+                0.08268190777901245,
+                0.12918073218207016
+              ]
+            },
+            "validation_metrics": {
+              "Brier": 0.46419289083543597,
+              "ECE": 0.1939401597296695,
+              "NLL": 0.8139826579332666,
+              "accuracy": 0.6428571428571429,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "default": "scalar_temperature",
+        "selected": {
+          "eval_labels_used_for_selection": false,
+          "fit_split": "A0xT_validation",
+          "heldout_metrics": {
+            "Brier": 0.3182905918937178,
+            "ECE": 0.09646967048782652,
+            "NLL": 0.5765870097953508,
+            "accuracy": 0.7689393939393939,
+            "chance_Brier": 0.75,
+            "chance_accuracy": 0.25
+          },
+          "method": "dirichlet_calibration",
+          "params": {
+            "coef": [
+              [
+                1.5902636114689659,
+                -0.3906274556714548,
+                -0.5705592271404498,
+                -0.5466192797483358
+              ],
+              [
+                -0.6883383550015219,
+                0.8803456679699563,
+                -0.1515700333438037,
+                -0.21507970917895763
+              ],
+              [
+                -0.453183625049753,
+                -0.10430954246298697,
+                0.6841033748107666,
+                -0.1680567275510337
+              ],
+              [
+                -0.4487416314176968,
+                -0.38540866983551814,
+                0.03802588567348653,
+                0.9297557164783273
+              ]
+            ],
+            "intercept": [
+              0.02127394219707162,
+              -0.23313658215815342,
+              0.08268190777901245,
+              0.12918073218207016
+            ]
+          },
+          "validation_metrics": {
+            "Brier": 0.46419289083543597,
+            "ECE": 0.1939401597296695,
+            "NLL": 0.8139826579332666,
+            "accuracy": 0.6428571428571429,
+            "chance_Brier": 0.75,
+            "chance_accuracy": 0.25
+          }
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.46419289083543597,
+        "ECE": 0.1939401597296695,
+        "NLL": 0.8139826579332666,
+        "accuracy": 0.6428571428571429,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "crop_aggregation": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.6708163619041443,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "validation_selected_crop_aggregation",
+      "heldout_metrics": {
+        "Brier": 0.33705780998160995,
+        "ECE": 0.0821662868816585,
+        "NLL": 0.6116569620329122,
+        "accuracy": 0.7651515151515151,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.3664100372095168,
+        "ECE": 0.1430036360604308,
+        "NLL": 0.6755002437672526,
+        "accuracy": 0.7651515151515151,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "heldout_metrics_raw_report_only": {
+              "Brier": 0.3738553149083527,
+              "ECE": 0.16379442939619274,
+              "NLL": 0.6891319803156859,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "mean_logits",
+            "validation_metrics_raw": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_raw_report_only": {
+              "Brier": 0.3784459976844929,
+              "ECE": 0.14739562976126505,
+              "NLL": 0.6943529629007116,
+              "accuracy": 0.75,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "median_logits",
+            "validation_metrics_raw": {
+              "Brier": 0.5031352382251874,
+              "ECE": 0.16633669602253245,
+              "NLL": 0.9151757101229341,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_raw_report_only": {
+              "Brier": 0.37391002182942745,
+              "ECE": 0.16221151020743632,
+              "NLL": 0.6887426963885003,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "trimmed_mean_logits",
+            "validation_metrics_raw": {
+              "Brier": 0.5046459243422301,
+              "ECE": 0.20860119199442315,
+              "NLL": 0.9125823589245918,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_raw_report_only": {
+              "Brier": 0.3664100372095168,
+              "ECE": 0.1430036360604308,
+              "NLL": 0.6755002437672526,
+              "accuracy": 0.7651515151515151,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "method": "confidence_weighted_logits",
+            "validation_metrics_raw": {
+              "Brier": 0.49725563011965523,
+              "ECE": 0.2484195841654852,
+              "NLL": 0.8994020688872395,
+              "accuracy": 0.6785714285714286,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_method": "confidence_weighted_logits",
+        "selection_objective": "validation_Brier_tie_break_validation_accuracy"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.48257427378764334,
+        "ECE": 0.25903781940684445,
+        "NLL": 0.864359071845077,
+        "accuracy": 0.6785714285714286,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.49725563011965523,
+        "ECE": 0.2484195841654852,
+        "NLL": 0.8994020688872395,
+        "accuracy": 0.6785714285714286,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "seed_ensemble": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.5339529514312744,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "seed_ensemble",
+      "heldout_metrics": {
+        "Brier": 0.29549764569793835,
+        "ECE": 0.052452498700723764,
+        "NLL": 0.5331161490569613,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.347022292880061,
+        "ECE": 0.18269577649295385,
+        "NLL": 0.6497208175553317,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "aggregation": "average_trial_level_logits_across_seeds",
+        "seeds": [
+          42,
+          43,
+          44
+        ]
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.46011126335137886,
+        "ECE": 0.1817108508561012,
+        "NLL": 0.8167120693651834,
+        "accuracy": 0.6964285714285714,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.49382836914584566,
+        "ECE": 0.21369741355411104,
+        "NLL": 0.8955721099258296,
+        "accuracy": 0.6964285714285714,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "stronger_teacher": {
+      "experiment": "stronger_classical_teacher",
+      "heldout_metrics": {
+        "Brier": 0.6127194831437752,
+        "ECE": 0.3733427343140732,
+        "NLL": 1.1162532530394422,
+        "accuracy": 0.7007575757575758,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "candidates": [
+          {
+            "heldout_metrics_for_report_only": {
+              "Brier": 0.7007967300696927,
+              "ECE": 0.26930243421426175,
+              "NLL": 1.2722312056914533,
+              "accuracy": 0.2727272727272727,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "name": "lda_svm_vote",
+            "skipped": false,
+            "validation_metrics": {
+              "Brier": 0.6748167733260455,
+              "ECE": 0.22307932547676557,
+              "NLL": 1.2365417361759656,
+              "accuracy": 0.4642857142857143,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_for_report_only": {
+              "Brier": 0.8199627866788542,
+              "ECE": 0.22783744940298542,
+              "NLL": 1.5190817541883581,
+              "accuracy": 0.26136363636363635,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "name": "fbcsp_lda",
+            "skipped": false,
+            "validation_metrics": {
+              "Brier": 0.6947885069988082,
+              "ECE": 0.24322591934813853,
+              "NLL": 1.2869057643015027,
+              "accuracy": 0.42857142857142855,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_for_report_only": {
+              "Brier": 0.7910309600919999,
+              "ECE": 0.16173142001360236,
+              "NLL": 1.4652387413648436,
+              "accuracy": 0.2159090909090909,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "name": "shrinkage_lda",
+            "skipped": false,
+            "validation_metrics": {
+              "Brier": 0.7530046931088886,
+              "ECE": 0.14626427985936533,
+              "NLL": 1.3915932335688235,
+              "accuracy": 0.21428571428571427,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_for_report_only": {
+              "Brier": 0.5140906722079132,
+              "ECE": 0.19028526262448509,
+              "NLL": 1.0202975940810406,
+              "accuracy": 0.6590909090909091,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "name": "tangent_logreg",
+            "skipped": false,
+            "validation_metrics": {
+              "Brier": 0.7875158591163867,
+              "ECE": 0.35486917146639313,
+              "NLL": 1.9110097329104296,
+              "accuracy": 0.5178571428571429,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          {
+            "heldout_metrics_for_report_only": {
+              "Brier": 0.6127194831437752,
+              "ECE": 0.3733427343140732,
+              "NLL": 1.1162532530394422,
+              "accuracy": 0.7007575757575758,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "name": "mdrm_t",
+            "skipped": false,
+            "validation_metrics": {
+              "Brier": 0.5855878916385834,
+              "ECE": 0.21637227284480343,
+              "NLL": 1.066106878378368,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        ],
+        "selected_teacher": "mdrm_t",
+        "selection_objective": "validation_Brier_tie_break_validation_accuracy"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.5855878916385834,
+        "ECE": 0.21637227284480343,
+        "NLL": 1.066106878378368,
+        "accuracy": 0.6071428571428571,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "swa_ema": {
+      "calibration": {
+        "eval_labels_used_for_fit": false,
+        "fit_split": "A0xT_validation",
+        "method": "scalar_temperature",
+        "temperature": 0.6768286824226379,
+        "temperature_at_upper_clamp": false
+      },
+      "experiment": "ema_late_checkpoint",
+      "heldout_metrics": {
+        "Brier": 0.3160827360307337,
+        "ECE": 0.09919733889053708,
+        "NLL": 0.5773158119281526,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "heldout_metrics_raw": {
+        "Brier": 0.35197278432809076,
+        "ECE": 0.17735700041449762,
+        "NLL": 0.6588318281148329,
+        "accuracy": 0.7954545454545454,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "checkpoint_average": "ema",
+        "model": {
+          "architecture": {
+            "dropout": 0.5,
+            "max_norm": 0.0,
+            "temporal_filters": 16,
+            "temporal_kernel": 64
+          },
+          "augmentation": {
+            "channel_dropout": 0.0,
+            "freq_mask_frac": 0.0,
+            "noise_std": 0.0,
+            "time_shift": 0
+          },
+          "average_checkpoint": "ema",
+          "checkpoint_eval_labels_used": false,
+          "checkpoint_rule": "val_loss",
+          "checkpoint_selection_split": "A0xT_validation",
+          "loss": {
+            "ce": true,
+            "lambda_brier": 0.0
+          },
+          "random_seed": 42
+        }
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.49801389787489836,
+        "ECE": 0.24628470635790425,
+        "NLL": 0.9162583175372329,
+        "accuracy": 0.5892857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "validation_metrics_raw": {
+        "Brier": 0.518104876143249,
+        "ECE": 0.24070012897674636,
+        "NLL": 0.9485836772371287,
+        "accuracy": 0.5892857142857143,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    },
+    "teacher_student_mixture": {
+      "experiment": "teacher_student_probability_mixing",
+      "heldout_metrics": {
+        "Brier": 0.3367590824568178,
+        "ECE": 0.0884495166287913,
+        "NLL": 0.6218708314045568,
+        "accuracy": 0.7689393939393939,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      },
+      "metadata": {
+        "alpha_grid": [
+          {
+            "alpha": 0.0,
+            "validation_Brier": 0.5855878916385835,
+            "validation_accuracy": 0.6071428571428571
+          },
+          {
+            "alpha": 0.05,
+            "validation_Brier": 0.573645100191189,
+            "validation_accuracy": 0.6071428571428571
+          },
+          {
+            "alpha": 0.1,
+            "validation_Brier": 0.5624037444980766,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.15,
+            "validation_Brier": 0.551863824559246,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.2,
+            "validation_Brier": 0.5420253403746973,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.25,
+            "validation_Brier": 0.5328882919444304,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.3,
+            "validation_Brier": 0.5244526792684454,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.35,
+            "validation_Brier": 0.5167185023467423,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.4,
+            "validation_Brier": 0.5096857611793211,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.45,
+            "validation_Brier": 0.5033544557661818,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.5,
+            "validation_Brier": 0.4977245861073242,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.55,
+            "validation_Brier": 0.4927961522027485,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.6,
+            "validation_Brier": 0.48856915405245477,
+            "validation_accuracy": 0.6071428571428571
+          },
+          {
+            "alpha": 0.65,
+            "validation_Brier": 0.48504359165644295,
+            "validation_accuracy": 0.625
+          },
+          {
+            "alpha": 0.7,
+            "validation_Brier": 0.4822194650147128,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.75,
+            "validation_Brier": 0.48009677412726465,
+            "validation_accuracy": 0.6607142857142857
+          },
+          {
+            "alpha": 0.8,
+            "validation_Brier": 0.4786755189940983,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.85,
+            "validation_Brier": 0.4779556996152139,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.9,
+            "validation_Brier": 0.47793731599061134,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 0.95,
+            "validation_Brier": 0.4786203681202907,
+            "validation_accuracy": 0.6428571428571429
+          },
+          {
+            "alpha": 1.0,
+            "validation_Brier": 0.48000485600425197,
+            "validation_accuracy": 0.6071428571428571
+          }
+        ],
+        "comparators": {
+          "calibrated_student": {
+            "heldout": {
+              "Brier": 0.33217654211964903,
+              "ECE": 0.08182486034272167,
+              "NLL": 0.5969126745237632,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.48000485600425197,
+              "ECE": 0.16553908432867767,
+              "NLL": 0.8520898882677973,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          "matched_raw_student": {
+            "heldout": {
+              "Brier": 0.3738553149083527,
+              "ECE": 0.16379442939619274,
+              "NLL": 0.6891319803156859,
+              "accuracy": 0.7689393939393939,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.5055500406832566,
+              "ECE": 0.18442338969153949,
+              "NLL": 0.9145746285989385,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          },
+          "teacher_alone": {
+            "heldout": {
+              "Brier": 0.6127194831437752,
+              "ECE": 0.3733427343140732,
+              "NLL": 1.1162532530394422,
+              "accuracy": 0.7007575757575758,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            },
+            "validation": {
+              "Brier": 0.5855878916385834,
+              "ECE": 0.21637227284480343,
+              "NLL": 1.066106878378368,
+              "accuracy": 0.6071428571428571,
+              "chance_Brier": 0.75,
+              "chance_accuracy": 0.25
+            }
+          }
+        },
+        "selected_alpha": 0.9,
+        "teacher": "mdrm_t"
+      },
+      "selection_audit": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "A0xE_final_report_only",
+        "selection_split": "A0xT_validation"
+      },
+      "validation_metrics": {
+        "Brier": 0.47793731599061134,
+        "ECE": 0.19349667080499305,
+        "NLL": 0.8592205243660465,
+        "accuracy": 0.6428571428571429,
+        "chance_Brier": 0.75,
+        "chance_accuracy": 0.25
+      }
+    }
+  },
+  "n_classes": 4,
+  "paths": {
+    "eval": "data/bci4_2a_subject9_eval.npz",
+    "train": "data/bci4_2a_subject9_train.npz"
+  },
+  "protocol": {
+    "chance_Brier": 0.75,
+    "chance_accuracy": 0.25,
+    "classes": [
+      769,
+      770,
+      771,
+      772
+    ],
+    "eval_class_counts": {
+      "0": 69,
+      "1": 71,
+      "2": 67,
+      "3": 57
+    },
+    "eval_labels_used_for": "final_metrics_only",
+    "eval_labels_used_for_selection": false,
+    "fit_split": "A0xT_train",
+    "heldout_split": "A0xE_final_report_only",
+    "n_classes": 4,
+    "n_eval": 264,
+    "n_train": 221,
+    "n_validation": 56,
+    "protocol_name": "A0xT_train_validation_to_A0xE",
+    "stratified_validation_split": true,
+    "train_class_counts": {
+      "0": 54,
+      "1": 57,
+      "2": 56,
+      "3": 54
+    },
+    "validation_class_counts": {
+      "0": 14,
+      "1": 15,
+      "2": 14,
+      "3": 13
+    },
+    "validation_split": "A0xT_validation"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "split": {
+    "eval_labels_used_for": "final_metrics_only",
+    "fit_split": "A0xT_train",
+    "stratified": true,
+    "validation_split": "A0xT_validation"
+  },
+  "subject": 9,
+  "validation_discipline": {
+    "eval_labels_used_for_selection": false,
+    "heldout_labels_used_for": "final_heldout_metrics_only",
+    "heldout_split": "A0xE_final_report_only",
+    "selection_split": "A0xT_validation",
+    "train_split": "A0xT_train"
+  }
+}

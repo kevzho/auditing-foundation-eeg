@@ -1,0 +1,5 @@
+dataset,arm,best_epoch,best_val_Brier,n_subjects
+bci4_2a,pretrained,28,0.5945040579820082,9
+bci4_2a,random init,60,0.9870800066520498,9
+bnci2014_004,pretrained,12,0.31845416017398265,9
+bnci2014_004,random init,59,0.484605465111269,9

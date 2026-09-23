@@ -1,0 +1,5 @@
+dataset,target_coverage,method,method_label,reference_method,n_subjects,mean_delta_selective_accuracy,median_delta_selective_accuracy,wilcoxon_p_selective_accuracy,wins_selective_accuracy,ties_selective_accuracy,losses_selective_accuracy,mean_delta_risk,median_delta_risk,wilcoxon_p_risk,eval_labels_used_for_threshold
+BCI IV-2a,0.4,mdrm_t_ea,MDRM-T + EA,baseline,1,,,1.0,0,0,0,,,1.0,False
+BCI IV-2a,0.6,mdrm_t_ea,MDRM-T + EA,baseline,1,0.3780487804878049,0.3780487804878049,1.0,1,0,0,-0.3780487804878049,-0.3780487804878049,1.0,False
+BCI IV-2a,0.8,mdrm_t_ea,MDRM-T + EA,baseline,1,0.28283506886126974,0.28283506886126974,1.0,1,0,0,-0.28283506886126974,-0.28283506886126974,1.0,False
+BCI IV-2a,0.9,mdrm_t_ea,MDRM-T + EA,baseline,1,0.27300280208154637,0.27300280208154637,1.0,1,0,0,-0.27300280208154626,-0.27300280208154626,1.0,False

@@ -1,0 +1,43 @@
+{
+  "dataset": "bci4_2a",
+  "experiments": [
+    "baseline"
+  ],
+  "external_confirmatory": false,
+  "subjects": [
+    1
+  ],
+  "summary": [
+    {
+      "chance_Brier": 0.75,
+      "chance_accuracy": 0.25,
+      "dataset": "bci4_2a",
+      "experiment": "baseline_ce_cropped_shallow_convnet",
+      "experiment_key": "baseline",
+      "heldout_Brier_mean": 0.5769132426960583,
+      "heldout_Brier_std": 0.0,
+      "heldout_ECE_mean": 0.11654288238559607,
+      "heldout_ECE_std": 0.0,
+      "heldout_NLL_mean": 0.9772399150171461,
+      "heldout_NLL_std": 0.0,
+      "heldout_accuracy_mean": 0.53125,
+      "heldout_accuracy_std": 0.0,
+      "n_classes": 4,
+      "n_subjects": 1,
+      "val_Brier_mean": 0.5514922763126779,
+      "val_Brier_std": 0.0,
+      "val_ECE_mean": 0.17505889088650076,
+      "val_ECE_std": 0.0,
+      "val_NLL_mean": 0.9361136544885782,
+      "val_NLL_std": 0.0,
+      "val_accuracy_mean": 0.5517241379310345,
+      "val_accuracy_std": 0.0
+    }
+  ],
+  "validation_discipline": {
+    "a0xe_used_for_selection": false,
+    "eval_labels_used_for_selection": false,
+    "heldout_split": "A0xE_final_report_only",
+    "selection_split": "A0xT_validation"
+  }
+}

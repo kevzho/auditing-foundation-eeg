@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Paired held-out deltas versus baseline. For Brier, negative deltas indicate improvement; for accuracy, positive deltas indicate improvement. CIs are 95\% bootstrap intervals over subjects; W/T/L reports win/tie/loss counts.}
+\label{tab:paired-stats}
+\begin{tabular}{llclcccc}
+\toprule
+Dataset & Method & Metric & $n$ & Mean $\Delta$ & 95\% CI & Wilcoxon $p$ & W/T/L \\
+\midrule
+BCI IV-2a & Seed ensemble & Brier & 9 & -0.0195 & [-0.0319, -0.0054] & 0.027 & 8/0/1 \\
+BCI IV-2a & Seed ensemble & accuracy & 9 & 0.018 & [0.007, 0.030] & 0.039 & 6/1/2 \\
+BCI IIIa & Seed ensemble & Brier & 3 & -0.0359 & [-0.0808, -0.0109] & 0.250 & 3/0/0 \\
+BCI IIIa & Seed ensemble & accuracy & 3 & 0.024 & [0.000, 0.071] & 1.000 & 1/2/0 \\
+BNCI2014\_001 & Seed ensemble & Brier & 9 & 0.0005 & [-0.0165, 0.0188] & 0.734 & 6/0/3 \\
+BNCI2014\_001 & Seed ensemble & accuracy & 9 & -0.008 & [-0.025, 0.009] & 0.570 & 3/0/6 \\
+BNCI2014\_004 & Seed ensemble & Brier & 9 & 0.0012 & [-0.0102, 0.0161] & 0.652 & 6/0/3 \\
+BNCI2014\_004 & Seed ensemble & accuracy & 9 & 0.000 & [-0.010, 0.009] & 0.844 & 4/1/4 \\
+\bottomrule
+\end{tabular}
+\end{table*}

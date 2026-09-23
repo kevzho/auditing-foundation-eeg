@@ -1,0 +1,1033 @@
+{
+  "dataset": "BNCI2014_004",
+  "inspection": [
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 720,
+        "run": {
+          "counts": {
+            "0": 720
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 720,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 360,
+        "right_hand": 360
+      },
+      "subject": 1,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 680,
+        "run": {
+          "counts": {
+            "0": 680
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 120,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 680,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 140,
+          "1": 140
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 280,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 340,
+        "right_hand": 340
+      },
+      "subject": 2,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 720,
+        "run": {
+          "counts": {
+            "0": 720
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 720,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 360,
+        "right_hand": 360
+      },
+      "subject": 3,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 740,
+        "run": {
+          "counts": {
+            "0": 740
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 140,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 140,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 740,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 260,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 130,
+          "1": 130
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 370,
+        "right_hand": 370
+      },
+      "subject": 4,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 740,
+        "run": {
+          "counts": {
+            "0": 740
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 140,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 140,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 740,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 260,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 130,
+          "1": 130
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 370,
+        "right_hand": 370
+      },
+      "subject": 5,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 720,
+        "run": {
+          "counts": {
+            "0": 720
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 720,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 360,
+        "right_hand": 360
+      },
+      "subject": 6,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 720,
+        "run": {
+          "counts": {
+            "0": 720
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 720,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 360,
+        "right_hand": 360
+      },
+      "subject": 7,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 760,
+        "run": {
+          "counts": {
+            "0": 760
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 160,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 160,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 760,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 280,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 140,
+          "1": 140
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 380,
+        "right_hand": 380
+      },
+      "subject": 8,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    },
+    {
+      "classes": [
+        "left_hand",
+        "right_hand"
+      ],
+      "dataset": "BNCI2014_004",
+      "meta_structure": {
+        "columns": [
+          "subject",
+          "session",
+          "run"
+        ],
+        "n_trials": 720,
+        "run": {
+          "counts": {
+            "0": 720
+          },
+          "values": [
+            "0"
+          ]
+        },
+        "session": {
+          "counts": {
+            "0train": 120,
+            "1train": 120,
+            "2train": 160,
+            "3test": 160,
+            "4test": 160
+          },
+          "values": [
+            "0train",
+            "1train",
+            "2train",
+            "3test",
+            "4test"
+          ]
+        },
+        "session_run_counts": [
+          {
+            "n": 120,
+            "run": "0",
+            "session": "0train"
+          },
+          {
+            "n": 120,
+            "run": "0",
+            "session": "1train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "2train"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "3test"
+          },
+          {
+            "n": 160,
+            "run": "0",
+            "session": "4test"
+          }
+        ]
+      },
+      "n_classes": 2,
+      "n_trials": 720,
+      "ok": true,
+      "protocol": {
+        "allow_stratified_external_split": false,
+        "eval_class_counts": {
+          "0": 160,
+          "1": 160
+        },
+        "eval_labels_used_for": "final_metrics_only",
+        "eval_labels_used_for_selection": false,
+        "eval_sessions": [
+          "3test",
+          "4test"
+        ],
+        "n_eval": 320,
+        "n_train": 240,
+        "n_validation": 160,
+        "protocol_name": "explicit_moabb_train_validation_eval",
+        "train_class_counts": {
+          "0": 120,
+          "1": 120
+        },
+        "train_eval_protocol": "explicit MOABB train sessions to explicit MOABB test sessions",
+        "train_sessions": [
+          "0train",
+          "1train",
+          "2train"
+        ],
+        "validation_class_counts": {
+          "0": 80,
+          "1": 80
+        },
+        "validation_rule": "held_out_last_training_session",
+        "validation_value": "2train"
+      },
+      "raw_class_counts": {
+        "left_hand": 360,
+        "right_hand": 360
+      },
+      "subject": 9,
+      "validation_discipline": {
+        "eval_labels_used_for_selection": false,
+        "heldout_split": "external_eval_final_report_only",
+        "selection_split": "external_validation",
+        "train_split": "external_train"
+      }
+    }
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ]
+}
