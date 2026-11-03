@@ -69,14 +69,16 @@ reproducibility/                 the shell scripts the CLI wraps
 results/paper_calibration_stats/ generated tables, including fm_audit/REPORT.md
 results/fm_probe*/               per-subject metrics and run records
 figures/                         figures that are not script-generated
+paper/                           manuscript source
 ```
 
 ## Notes on scope
 
 Three seeds were run on the decisive comparison and one elsewhere; frozen-probe
-and LaBraM arms are single-seed. Some early runs used a non-deterministic MPS
-backend and are marked as such in their run records — every number reported in
-the paper comes from the deterministic CPU backend. These limitations are
+and LaBraM arms are single-seed. Frozen probes ran on the deterministic CPU
+backend; the supervised comparators and fine-tuning arms ran on a
+non-deterministic MPS backend and are marked as such in their run records.
+Deterministic CPU reruns of the decisive comparison are in `results/fm_probe_cpu/`. These limitations are
 stated in the report rather than filtered out.
 
 ## License
