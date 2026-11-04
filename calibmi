@@ -20,13 +20,16 @@ CalibMI
   ./calibmi report       [offline] regenerate results/.../fm_audit/REPORT.md
   ./calibmi decompose    [offline] regenerate the matched-input decomposition
   ./calibmi multiplicity [offline] regenerate the multiplicity tables
+  ./calibmi contrasts    [offline] matched-input intervals, paired contrasts,
+                                   and raw-versus-scaled calibration
   ./calibmi readout      [offline] rebuild merged comparisons, paired deltas,
                                    bootstrap CIs and Wilcoxon tests
   ./calibmi figures      [offline] protocol schematic and learning curves
   ./calibmi power        [offline] detection rate vs cohort size, by resampling
                                    the 54-subject cohort
   ./calibmi manifest     [offline] SHA256 reproducibility manifest
-  ./calibmi tables       [offline] audit + report + decompose + multiplicity + manifest
+  ./calibmi tables       [offline] audit + report + decompose + multiplicity +
+                                   contrasts + power + manifest
 
   ./calibmi smoke        [raw]     short code-path check before long runs
   ./calibmi full         [raw]     full validation-locked retraining (slow)
@@ -50,6 +53,7 @@ case "${1:-}" in
   report)       $PY src/scripts/make_fm_audit_report.py ;;
   decompose)    $PY src/scripts/make_preprocessing_decomposition.py ;;
   multiplicity) $PY src/scripts/make_multiplicity_table.py ;;
+  contrasts)    $PY src/scripts/make_matched_input_contrasts.py ;;
   readout)      bash reproducibility/01_readout_from_saved_results.sh ;;
   figures)
     bash reproducibility/04_protocol_schematic.sh
@@ -61,7 +65,7 @@ case "${1:-}" in
         --results-dir results --out results/reproducibility_manifest.json
     ;;
   tables)
-    "$0" audit && "$0" report && "$0" decompose && "$0" multiplicity && "$0" power && "$0" manifest
+    "$0" audit && "$0" report && "$0" decompose && "$0" multiplicity && "$0" contrasts && "$0" power && "$0" manifest
     echo "tables rebuilt from saved artifacts; no model was retrained."
     ;;
   smoke)        bash reproducibility/00_smoke_test.sh ;;

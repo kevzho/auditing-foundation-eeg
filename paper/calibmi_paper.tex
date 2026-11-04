@@ -10,7 +10,6 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 
-% 5-PAGE LIMIT INCLUDING FIGURES, TABLES AND REFERENCES.
 \setlength{\textfloatsep}{5pt plus 1pt minus 2pt}
 \setlength{\floatsep}{4pt plus 1pt minus 2pt}
 \setlength{\abovecaptionskip}{2pt}
@@ -164,7 +163,7 @@ Table~\ref{tab:main} summarizes representative configurations from a 26-configur
 \toprule
 Configuration & Acc. & Brier & ECE \\
 \midrule
-ShallowConvNet           & 0.6962 & 0.4047 & 0.0808 \\
+ShallowConvNet, cropped  & 0.6962 & 0.4047 & 0.0808 \\
 ATCNet, broadband        & 0.6562 & 0.4695 & 0.1062 \\
 EEG Conformer, broadband & 0.5305 & 0.5858 & 0.1072 \\
 CBraMod, fine-tuned      & 0.4796 & 0.6493 & 0.1236 \\
@@ -181,11 +180,11 @@ Under the initial reference recipe, the validation-optimal epoch occurs between 
 
 \subsection{Matched-Input Estimates Differ in Sign}
 
-We define the matched-input term as narrowband minus broadband accuracy for the same comparator family. A negative value therefore means the broadband foundation-model pathway performs better.
+We define the matched-input term as narrowband minus broadband accuracy for the same comparator family. A negative value therefore means the broadband foundation-model pathway performs better. Both arms of each term share one single-window training recipe; the cropped ShallowConvNet of Table~\ref{tab:main} is deliberately excluded, because comparing against it would mix training recipe with input pipeline.
 
 \begin{table}[t]
 \centering
-\caption{Matched-input analysis on BCI IV-2a ($n=9$). Wins count subjects for which narrowband input achieved higher accuracy.}
+\caption{Matched-input analysis on BCI IV-2a ($n=9$). Wins count subjects for which narrowband input achieved higher accuracy. $^{\dagger}$Single-window recipe, not the cropped model of Table~\ref{tab:main}.}
 \label{tab:matched}
 \small
 \begin{tabular}{lccccc}
@@ -193,13 +192,13 @@ We define the matched-input term as narrowband minus broadband accuracy for the 
 Architecture & Narrow & Broad & Diff. & Wins & $p_{\mathrm{BH}}$ \\
 \midrule
 ATCNet         & .5788 & .6562 & $-.078$ & 1/9 & .073 \\
-ShallowConvNet & .6453 & .6084 & $+.037$ & 5/9 & .304 \\
+ShallowConvNet$^{\dagger}$ & .6453 & .6084 & $+.037$ & 5/9 & .304 \\
 EEG Conformer  & .6182 & .5305 & $+.088$ & 8/9 & .176 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-For ATCNet, broadband input improves mean accuracy by 0.078 and wins for eight of nine subjects. For EEG Conformer, the direction reverses: narrowband improves mean accuracy by 0.088 and wins for eight of nine subjects. ShallowConvNet lies between those cases. None of the three individual terms survives Benjamini--Hochberg correction. Subject-level 95\% bootstrap intervals are $[-.160,-.017]$ for ATCNet, $[-.004,+.082]$ for ShallowConvNet, and $[-.030,+.171]$ for EEG Conformer. Contrasting the architecture-specific terms directly within subject, the EEG Conformer term exceeds the ATCNet term by 0.165 (9/9 subjects, $p_{\mathrm{BH}}=.006$) and the ShallowConvNet term exceeds it by 0.114 (9/9, $p_{\mathrm{BH}}=.006$); EEG Conformer and ShallowConvNet do not differ detectably (0.051, $p_{\mathrm{BH}}=.121$). These contrasts come from one fit/selection split and one training seed per arm, so they indicate that ATCNet responds differently to the input change rather than establishing why. The result is consequential: the observed input-matching estimate differs in sign across comparator architectures. A single-architecture control should therefore be interpreted cautiously when used to apportion a pretrained-versus-supervised gap.
+For ATCNet, broadband input improves mean accuracy by 0.078 and wins for eight of nine subjects (1/9 narrowband wins). For EEG Conformer, the direction reverses: narrowband improves mean accuracy by 0.088 and wins for eight of nine subjects. ShallowConvNet lies between those cases. None of the three individual terms survives Benjamini--Hochberg correction, and each reflects a narrow per-pathway search (kernel and filter count for ShallowConvNet, learning rate otherwise) that a wider search could move. Subject-level 95\% bootstrap intervals are $[-.160,-.017]$ for ATCNet, $[-.004,+.082]$ for ShallowConvNet, and $[-.030,+.171]$ for EEG Conformer. Contrasting the architecture-specific terms directly within subject, the EEG Conformer term exceeds the ATCNet term by 0.165 (9/9 subjects, $p_{\mathrm{BH}}=.006$) and the ShallowConvNet term exceeds it by 0.114 (9/9, $p_{\mathrm{BH}}=.006$); EEG Conformer and ShallowConvNet do not differ detectably (0.051, $p_{\mathrm{BH}}=.129$). These contrasts come from one fit/selection split and one training seed per arm, so they indicate that ATCNet responds differently to the input change rather than establishing why.
 
 \subsection{Task Dependence and Robustness}\label{sec:robust}
 
@@ -211,7 +210,7 @@ To test whether the random-initialization arm was simply under-trained, we repea
 
 \subsection{Calibration}
 
-Raw foundation-model logits are strongly overconfident. Frozen configurations require validation-fitted temperatures from 3.5 to 9.5, with one to four of nine subjects reaching the 20.0 cap, compared with approximately 1.03 for broadband ShallowConvNet. Table~\ref{tab:calib} reports held-out metrics before and after scaling. After temperature scaling, held-out CBraMod ECE falls between 0.103 and 0.124, within the 0.101--0.143 range observed across the eight validation-tuned single-window supervised arms on BCI IV-2a (the six matched-input arms of Table~\ref{tab:matched}, ICA-cleaned broadband ShallowConvNet, and retuned narrowband ATCNet) despite much lower four-class accuracy. Scaling improves Brier only modestly for the pretrained arms; the large raw-to-scaled change belongs to the random-initialization control, whose raw ECE of 0.464 falls to 0.099.
+Raw foundation-model logits are strongly overconfident. Frozen configurations require validation-fitted temperatures from 3.1 to 9.5, with one to four of nine subjects reaching the 20.0 cap, compared with approximately 1.03 for broadband ShallowConvNet. Table~\ref{tab:calib} reports held-out metrics before and after scaling. After temperature scaling, held-out CBraMod ECE falls between 0.103 and 0.124, within the 0.101--0.143 range observed across the eight validation-tuned single-window supervised arms on BCI IV-2a (the six matched-input arms of Table~\ref{tab:matched}, ICA-cleaned broadband ShallowConvNet, and retuned narrowband ATCNet) despite much lower four-class accuracy. Scaling improves Brier only modestly for the pretrained arms; the large raw-to-scaled change belongs to the random-initialization control, whose raw ECE of 0.464 falls to 0.099.
 
 \begin{table}[t]
 \centering
@@ -237,15 +236,19 @@ LaBraM, frozen        & .734 & .732 & .088 & .087 [.081,.094] & 1.352 \\
 
 \section{Discussion and Limitations}
 
-The central methodological observation is not that one input pipeline is universally better. In this sample, the matched-input point estimate ranges from a 0.078 improvement for ATCNet to a 0.088 reduction for EEG Conformer. None of those individual terms survives multiple-comparison correction. The paired contrast separates ATCNet from the other two comparators, but with one split and one seed per arm we describe this as architectures responding differently to the same input change, not as a characterized mechanism. Their opposite observed directions nevertheless show why a decomposition based on one comparator should be interpreted cautiously. A practical remedy is inexpensive: repeat matched-input analysis across multiple reasonable comparator architectures and report raw differences rather than a percentage ``pipeline share,'' whose interpretation becomes unstable when the underlying term changes sign.
+The central methodological observation is not that one input pipeline is universally better. The matched-input point estimate ranges from a 0.078 improvement for ATCNet to a 0.088 reduction for EEG Conformer; no individual term survives correction, and with one split and seed per arm the paired contrast shows that architectures respond differently to the same input change, not why. Their opposite observed directions nevertheless show why a decomposition based on one comparator should be interpreted cautiously. A practical remedy is inexpensive: repeat matched-input analysis across multiple reasonable comparator architectures and report raw differences rather than a percentage ``pipeline share,'' whose interpretation becomes unstable when the underlying term changes sign.
 
 The main performance result is similarly bounded. These experiments do not show that pretrained EEG encoders fail generally. They show that, under a leakage-controlled cross-session protocol, the two encoders evaluated here trail three supervised architectures on four-class BCI IV-2a, while fine-tuned CBraMod is competitive with the supervised arms on BNCI2014-004. Calibration also emerges as a separate axis: one validation-fitted scalar largely repairs probability calibration even when discrimination remains weak. Whether that correction remains stable under reduced-precision on-device inference is untested here.
 
-Several limitations matter. We successfully evaluate two foundation models out of four attempted implementations and only two motor-imagery datasets. BNCI2014-004 contains three electrodes and is not a controlled replication of the 22-channel BCI IV-2a setting. The decisive pretrained-versus-random comparison uses three full reseeds, whereas several other configurations use one seed. Subject-level inference is limited to nine participants, making the design better suited to large, consistent effects than small improvements. The matched-input retuning is narrow: ShallowConvNet searches only temporal kernel size and filter count, and ATCNet and EEG Conformer only the learning rate. A broader per-pathway search (depth, dropout, pooling, window length) could shift the individual terms, so each term captures input pipeline plus this limited retuning rather than an isolated preprocessing operation. The matched-input analysis also uses a single fit/selection split and one seed per arm; the ShallowConvNet broadband arm, rerun under three deterministic CPU seeds, keeps its sign (terms 0.028--0.048), but the other arms were not reseeded, so the cross-architecture contrast should be treated as exploratory until replicated over repeated splits. Our foundation-model checks confirm checkpoint loading and input contracts but do not compare outputs against the reference implementations on fixed inputs. Raw (unscaled) NLL was not stored, so Table~\ref{tab:calib} reports NLL after scaling only.
+Several limitations matter. We successfully evaluate two foundation models out of four attempted implementations and only two motor-imagery datasets. BNCI2014-004 contains three electrodes and is not a controlled replication of the 22-channel BCI IV-2a setting. The decisive pretrained-versus-random comparison uses three full reseeds, whereas several other configurations use one seed. Subject-level inference is limited to nine participants, making the design better suited to large, consistent effects than small improvements. The matched-input retuning is narrow, and a broader per-pathway search (depth, dropout, pooling, window length) could shift the individual terms. The matched-input analysis also uses a single fit/selection split and one seed per arm; the ShallowConvNet broadband arm, rerun under three deterministic CPU seeds, keeps its sign (terms 0.028--0.048), but the other arms were not reseeded, so the cross-architecture contrast should be treated as exploratory until replicated over repeated splits. Our foundation-model checks confirm checkpoint loading and input contracts but do not compare outputs against the reference implementations on fixed inputs. Raw (unscaled) NLL was not stored, so Table~\ref{tab:calib} reports NLL after scaling only.
 
 \section*{Reproducibility}
 
-Code, per-subject result artifacts, per-trial probability files, pinned library versions, and a manifest with SHA256 hashes accompany the study. Every reported table is regenerated directly from those artifacts by analysis scripts; no table value is transcribed manually.
+Code, per-subject result artifacts, run records carrying platform fingerprints, pinned library versions, and a manifest with SHA256 hashes are available at \url{https://github.com/kevzho/auditing-foundation-eeg}. Every reported table is regenerated from those artifacts by a single command (\texttt{./calibmi tables}); no table value is transcribed manually.
+
+\section*{Use of AI Tools}
+
+An AI assistant (Claude, Anthropic) helped modify analysis scripts, including the one producing the Wins and $p_{\mathrm{BH}}$ columns of Table~\ref{tab:matched}, assemble and verify the bibliography, and edit the text. The authors designed the study, ran all experiments, and reviewed every change.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
