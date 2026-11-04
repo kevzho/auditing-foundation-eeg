@@ -24,7 +24,8 @@ CalibMI
                                    and raw-versus-scaled calibration
   ./calibmi readout      [offline] rebuild merged comparisons, paired deltas,
                                    bootstrap CIs and Wilcoxon tests
-  ./calibmi figures      [offline] protocol schematic and learning curves
+  ./calibmi figures      [offline] protocol schematic, learning curves, and the
+                                   paper figures (--prob-root for reliability)
   ./calibmi power        [offline] detection rate vs cohort size, by resampling
                                    the 54-subject cohort
   ./calibmi manifest     [offline] SHA256 reproducibility manifest
@@ -57,6 +58,7 @@ case "${1:-}" in
   readout)      bash reproducibility/01_readout_from_saved_results.sh ;;
   figures)
     bash reproducibility/04_protocol_schematic.sh
+    $PY src/scripts/make_paper_figures.py "${@:2}"
     $PY src/scripts/make_learning_curve_figure.py || echo "learning curves need results/fm_probe_curves"
     ;;
   power)        $PY src/scripts/make_subsampling_power.py "${@:2}" ;;
