@@ -1,21 +1,10 @@
 #!/usr/bin/env python3
 """Leave-one-subject-out frozen probing of EEG foundation models.
 
-Answers the strongest objection to the per-subject results: *foundation models
-are meant for the pooled regime, so of course they fail on ~230 calibration
-trials.* Here each fold pools eight subjects' training sessions -- roughly eight
-times the data -- and evaluates on the ninth subject's held-out session. If
-pretraining's value only appears with more data, this is where it shows up.
-
-Selection discipline is unchanged and is the reason this is not simply
-"train on 8, test on 1": probe regularisation and the scalar temperature are
-chosen on a selection split drawn from the *pooled training subjects*, never
-from the held-out subject. The held-out subject's evaluation session is read
-once, for the reported row.
-
-The random-init control runs the identical architecture with random weights on
-the identical pooled data, so the pooled-regime comparison isolates what
-pretraining contributes rather than what the architecture contributes.
+Each fold fits on the other subjects' training sessions and evaluates on the
+held-out subject's evaluation session. Probe regularization and temperature
+are selected using training subjects only. Random-init runs use the same
+architecture and data.
 
 Usage::
 
@@ -55,7 +44,6 @@ from experiments.run_classical_anchor_competence import (  # noqa: E402
 from experiments.run_fm_probe import (  # noqa: E402
     C_GRID,
     DATASET_LABELS,
-    encode_labels,
     load_fm_split,
     probe_logits,
     resume_completed_subjects,
@@ -73,33 +61,15 @@ def _prepare(X, ch_names, sfreq, spec, band, keep):
     return p
 
 
-def extract_all(args, spec, device: str, keep: int, cache_dir: Path | None = None) -> dict[int, dict]:
+def extract_all(args, spec, spec_bd, device: str, keep: int, cache_dir: Path | None = None) -> dict[int, dict]:
     """Frozen features for every subject, computed once and reused across folds.
 
-    Nine folds each need eight subjects' features; recomputing per fold would do
-    the same forward passes eight times over.
-
-    When ``cache_dir`` is given, each subject's features are written there and
-    returned as read-only memmaps instead of resident arrays. The arrays are
-    bit-identical either way -- this changes where the bytes live, not what
-    they are.
-
-    Why it is not optional at 54 subjects. CBraMod's ``flatten`` pooling is
-    ``patches * channels * d_model`` wide, which for Lee2019_MI's 62-channel
-    montage is 49600 floats per trial: 79.7 MB per subject, **4.30 GB** for 54
-    of them, on a 17 GB machine. Fold 1 then concatenates 53 subjects into a
-    1.7 GB fit matrix, which scikit-learn's lbfgs upcasts to float64 and the
-    scaler copies again. The n=54 control died there twice. At nine subjects
-    the same cache is 0.7 GB and none of this mattered, which is why the design
-    survived this long.
-
-    Dropping ``flatten`` would have been the cheap fix and is not available:
-    validation selects it on 54 of 54 folds of the pretrained arm, so a
-    control without it would be answering a different question.
+    With ``cache_dir``, feature arrays are stored as read-only memmaps. This
+    keeps the 54-subject, 62-channel flatten pooling within memory limits.
     """
     cache: dict[int, dict] = {}
     if args.model == "labram":
-        from models.labram_probe import channel_indices, extract_features, load_labram
+        from models.labram_probe import extract_features, load_labram
 
         model, report = load_labram(device=device, pretrained=not args.random_init)
     else:
@@ -208,7 +178,6 @@ def main() -> None:
     configure_determinism(bool(args.deterministic))
     set_all_seeds(args.seed)
 
-    global spec_bd
     if args.model == "labram":
         spec = LABRAM_SPEC
         spec_bd = None
@@ -223,10 +192,6 @@ def main() -> None:
     keep = args.patches * spec.patch_samples
     print(f"device={device} model={args.model} dataset={args.dataset} loso patches={args.patches}")
 
-    # Output paths are resolved before the first fold, not after the last.
-    # Deriving them at the end meant nothing could be written until every fold
-    # had succeeded: the 54-subject control was killed at fold 25 and all 24
-    # completed folds went with it, because they existed only in `rows`.
     args.out_dir.mkdir(parents=True, exist_ok=True)
     stem = f"fm_loso_{args.model}"
     if args.dataset != "bci4_2a":
@@ -239,12 +204,7 @@ def main() -> None:
     partial_csv = args.out_dir / f"{stem}_subject_metrics.csv.partial"
     fingerprint_path = args.out_dir / f"{stem}_run.json.partial"
 
-    # Same discipline as run_bd_fm_probe: resumption is refused unless the
-    # recorded arguments match, because appending folds computed under one
-    # configuration to folds computed under another fabricates a run that never
-    # happened. Note the fold identity depends on `subjects` as a whole -- each
-    # fold pools every other subject -- so a changed subject list must not
-    # resume, and the fingerprint covers it.
+    # A fold's training pool depends on the complete subject list.
     fingerprint = {
         k: v
         for k, v in vars(args).items()
@@ -262,32 +222,15 @@ def main() -> None:
         print(f"  resuming: {len(done)} fold(s) already on disk, {len(args.subjects) - len(done)} to go")
     fingerprint_path.write_text(json.dumps(fingerprint, indent=2), encoding="utf-8")
 
-    # Features spill to a scratch directory beside the results rather than
-    # staying resident; see extract_all. Removed on the way out, including on
-    # failure, so an interrupted run does not leave gigabytes behind on a
-    # volume that has been down to single-digit GB free.
-    # The path is deterministic, not a mkdtemp name, and it is cleared on the
-    # way *in* as well as on the way out.
-    #
-    # Cleanup-at-exit is not sufficient for this script and it is worth being
-    # explicit about why: `atexit` does not run on SIGKILL, and being killed is
-    # this job's characteristic failure -- twice for memory, on a volume that
-    # has been down to single-digit GB free. A random temp name plus an exit
-    # hook means every kill strands another 4.3 GB that nothing will ever
-    # collect, and the third kill is then caused by the first two.
-    #
-    # Clearing a known path at startup is the only cleanup that survives a
-    # kill, because it runs in the next process rather than the dead one. The
-    # cost is re-extracting features after an interrupted run; that is ~20
-    # minutes, against fold results which `--resume` still preserves.
+    # Use a stable path so the next run can clear files left by SIGKILL.
     cache_dir = args.out_dir / f".{stem}_features"
     if cache_dir.exists():
         print(f"  clearing stale feature cache from an interrupted run: {cache_dir}")
         shutil.rmtree(cache_dir, ignore_errors=True)
     cache_dir.mkdir(parents=True)
-    atexit.register(shutil.rmtree, cache_dir, True)  # best effort for clean exits
+    atexit.register(shutil.rmtree, cache_dir, True)
 
-    cache = extract_all(args, spec, device, keep, cache_dir=cache_dir)
+    cache = extract_all(args, spec, spec_bd, device, keep, cache_dir=cache_dir)
     report = cache.pop("_report")
 
     handle = partial_csv.open("a" if rows else "w", newline="", encoding="utf-8")
@@ -310,11 +253,7 @@ def main() -> None:
         y_sel = np.concatenate([enc(cache[s]["y_raw"]["selection"]) for s in pool_subjects])
         y_held = enc(cache[held_subject]["y_raw"]["heldout"])
 
-        # One pooling is materialised at a time and dropped before the next is
-        # built. Holding every pooling's stack simultaneously doubled the peak
-        # for no benefit: only the winner is used after selection, and the
-        # winner is rebuilt below. Selection is unchanged -- every (pooling, C)
-        # pair is still scored on the same validation split, in the same order.
+        # Materialize one pooling at a time to bound peak memory.
         best = {"brier": np.inf, "pooling": None, "C": None}
         for pooling in poolings:
             stack = {
@@ -335,10 +274,7 @@ def main() -> None:
                     best = {"brier": brier, "pooling": pooling, "C": c}
             del stack, pipe
 
-        # The winning pooling is rebuilt rather than retained. One extra
-        # concatenate per fold buys a peak that does not scale with the number
-        # of poolings, which is the difference between fitting in memory and
-        # not at 54 subjects.
+        # Rebuild only the selected pooling after the search.
         feats = {
             "fit": np.concatenate(
                 [cache[s]["features"]["fit"][best["pooling"]] for s in pool_subjects]
@@ -402,19 +338,12 @@ def main() -> None:
                 "audit_json": json.dumps(audit),
             }
         )
-        # Flushed per fold, so a kill costs one fold rather than the run.
         if writer is None:
             writer = csv.DictWriter(handle, fieldnames=list(rows[-1].keys()))
             writer.writeheader()
         writer.writerow(rows[-1])
         handle.flush()
 
-        # `stacked` holds every pooling's concatenated fit matrix for this
-        # fold -- with 62 channels and the "flatten" pooling that is the run's
-        # memory peak, and at 54 subjects it is ~6x what the n=9 runs held.
-        # Dropping it before the next fold builds its own is what keeps peak
-        # usage flat across folds instead of letting it creep until the kernel
-        # intervenes, which is how fold 25 died.
         del feats, probe
         print(
             f"  held-out s{held_subject}: acc {held_metrics['accuracy']:.4f} "
@@ -422,8 +351,7 @@ def main() -> None:
         )
 
     handle.close()
-    # Renamed only once every fold is in, so a truncated file can never be
-    # mistaken downstream for a finished n=54 result.
+    # Publish the CSV only after all folds finish.
     partial_csv.replace(out_csv)
     fingerprint_path.unlink(missing_ok=True)
     (args.out_dir / f"{stem}_run.json").write_text(
@@ -443,11 +371,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    # Coerced because resumed folds are read back from CSV as strings while
-    # folds computed in this process are floats. Leaving that unresolved made
-    # the summary raise *after* a correct CSV had already been written, so a
-    # successful run reported itself as a failure -- and under `set -e` would
-    # have taken the next arm in the script down with it.
+    # Resumed rows come from CSV and contain strings.
     accs = [float(r["heldout_accuracy"]) for r in rows]
     briers = [float(r["heldout_Brier"]) for r in rows]
     print(f"\nmean held-out accuracy {np.mean(accs):.4f}  Brier {np.mean(briers):.4f}  (n={len(rows)})")

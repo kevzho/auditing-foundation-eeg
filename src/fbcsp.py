@@ -40,7 +40,6 @@ def _bandpass_sos(sfreq: float, l_freq: float, h_freq: float, order: int = 5):
 
 
 def _apply_sosfiltfilt(X: np.ndarray, sos) -> np.ndarray:
-    # Filter along time axis (last axis)
     return signal.sosfiltfilt(sos, X, axis=-1)
 
 
@@ -120,7 +119,6 @@ class FBCSPFeatures(BaseEstimator, TransformerMixin):
         for i, sos in enumerate(self._sos):
             X_f = _apply_sosfiltfilt(X, sos)
             if not np.isfinite(X_f).all():
-                # Filtering should not introduce NaNs, but we guard to keep long runs from crashing.
                 X_f = np.nan_to_num(X_f, nan=0.0, posinf=0.0, neginf=0.0)
             self._csp_per_band[i].fit(X_f, y)
 
@@ -137,14 +135,11 @@ class FBCSPFeatures(BaseEstimator, TransformerMixin):
         feats = []
         for i, sos in enumerate(self._sos):
             X_f = _apply_sosfiltfilt(X, sos)
-            # CSP features
-            # mne.CSP.transform returns log-variance if log=True, shape (n_trials, n_components)
             csp_feat = self._csp_per_band[i].transform(X_f)
             feats.append(np.asarray(csp_feat, dtype=float))
 
             if self.include_bandpower:
-                # per-channel bandpower (log-variance) features
-                bp = _logvar(X_f, axis=-1)  # (n_trials, n_channels)
+                bp = _logvar(X_f, axis=-1)
                 feats.append(np.asarray(bp, dtype=float))
 
         return np.concatenate(feats, axis=1)

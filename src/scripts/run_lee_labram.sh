@@ -38,7 +38,7 @@
 # arms as "LaBraM's best on Lee2019"; quote them only as the paired control.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${ROOT}" || { echo "FATAL: ${ROOT} unreachable" >&2; exit 1; }
 
 SUBJ=""

@@ -18,7 +18,7 @@
 # and runs first, so an interruption still leaves the primary result complete.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${ROOT}" || { echo "FATAL: ${ROOT} unreachable" >&2; exit 1; }
 
 # Subject list comes from what is on disk, not from `seq 1 54`. Two subjects

@@ -40,9 +40,6 @@ class EDLHead(nn.Module):
         self.linear = nn.Linear(in_dim, self.n_output_classes)
         self.raw_K0 = nn.Parameter(torch.log(torch.expm1(torch.tensor(1.0))))
 
-        # Default initialization: small weights (leave PyTorch default),
-        # unit test will zero-init weight to guarantee vacuity for untrained check.
-
     @property
     def K0(self) -> torch.Tensor:
         """Positive learned evidential prior shared by all output classes."""
@@ -57,13 +54,11 @@ class EDLHead(nn.Module):
         Returns:
             dict with 'alpha', 'p_hat', 'vacuity', 'S', 'p_unknown'
         """
-        # Linear -> ReLU evidence
         logits = self.linear(z)
         e = F.relu(logits)
         alpha = e + self.K0
 
-        S = alpha.sum(dim=1)  # shape [batch]
-        # Avoid division by zero
+        S = alpha.sum(dim=1)
         S_unsq = S.unsqueeze(1)
         p_hat = alpha / (S_unsq + 1e-12)
 
@@ -229,7 +224,6 @@ def dirichlet_kl(alpha: torch.Tensor, beta: Optional[torch.Tensor] = None) -> to
     if beta is None:
         beta = torch.ones_like(alpha)
 
-    # Ensure shapes
     if beta.dim() == 1:
         beta = beta.unsqueeze(0).expand_as(alpha)
 
@@ -238,7 +232,6 @@ def dirichlet_kl(alpha: torch.Tensor, beta: Optional[torch.Tensor] = None) -> to
 
     t1 = torch.lgamma(sum_alpha) - torch.lgamma(sum_beta)
     t2 = (torch.lgamma(beta) - torch.lgamma(alpha)).sum(dim=1)
-    # digamma terms
     t3 = ((alpha - beta) * (torch.digamma(alpha) - torch.digamma(sum_alpha.unsqueeze(1)))).sum(dim=1)
 
     kl = t1 + t2 + t3
@@ -273,22 +266,17 @@ def evidential_loss(alpha: torch.Tensor,
         dict with 'loss' total and per-term losses
     """
     eps = 1e-8
-    # Convert y to one-hot
     if y.dim() == 1:
         y_long = y.long()
         y_onehot = torch.zeros_like(alpha).scatter_(1, y_long.unsqueeze(1), 1.0)
     else:
         y_onehot = y.float()
 
-    # L_CE: cross-entropy on p_hat
-    # clamp p_hat to avoid log(0)
     p = p_hat.clamp(min=eps, max=1.0)
     L_CE = - (y_onehot * torch.log(p)).sum(dim=1).mean()
 
-    # L_Brier: multiclass Brier score (mean squared error)
     L_Brier = ((p_hat - y_onehot) ** 2).sum(dim=1).mean()
 
-    # KL term: construct alpha_tilde = e * (1 - y_k) + K0
     if prior_K0 is None:
         prior_K0 = torch.tensor(1.0, device=alpha.device, dtype=alpha.dtype)
     else:
@@ -297,11 +285,9 @@ def evidential_loss(alpha: torch.Tensor,
     alpha_tilde = e * (1.0 - y_onehot) + prior_K0
     KL_term = dirichlet_kl(alpha_tilde, beta=torch.ones_like(alpha_tilde) * prior_K0).mean()
 
-    # L_diff: (s_pred - s_target)^2
     if (s_pred is None) or (s_target is None):
         L_diff = torch.tensor(0.0, device=alpha.device, dtype=alpha.dtype)
     else:
-        # allow scalar or batched difficulty targets
         s = s_pred.to(device=alpha.device, dtype=alpha.dtype)
         target = torch.as_tensor(s_target, device=alpha.device, dtype=alpha.dtype)
         L_diff = ((s - target) ** 2).mean()

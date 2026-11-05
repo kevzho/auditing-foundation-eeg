@@ -52,7 +52,6 @@ from experiments.run_fm_probe import (  # noqa: E402
     HELDOUT_SPLIT,
     SELECTION_SPLIT,
     encode_labels,
-    freeze_lower,
     load_fm_split,
     probe_logits,
     resume_completed_subjects,

@@ -1,24 +1,9 @@
 #!/usr/bin/env bash
-# Recipe-matched supervised arms for the decomposition (docs section 8h).
-#
-# Two gaps this closes, both found by auditing rather than planned:
-#
-#  1. ShallowConvNet's narrowband number came from `run_calibration_workflow.py`
-#     (`baseline_ce_cropped_shallow_convnet`: multi-scale crops with
-#     aggregation), while its broadband number came from this runner
-#     (single windows). Pairing them put the training recipe inside the term
-#     labelled "preprocessing". This runs the narrowband arm through the *same*
-#     loop so the pair differs only in input.
-#  2. ShallowConvNet has both bands on BCI IV-2a only, so the under-tuned /
-#     tuned inversion -- the section 8h lesson worth more than the number -- is
-#     still a single-dataset result. The BNCI2014_004 broadband arms fix that.
-#
-# Hardened like the SOTA sweep: absolute root, resume from disk, inputs checked
-# first, outputs checked after. The first attempt at arm 1 was killed three
-# subjects in when the volume remounted.
+# Recipe-matched narrowband and broadband supervised controls for the
+# preprocessing decomposition, including BNCI2014_004 replication.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 OUT="${ROOT}/results/supervised_sota"
 SUBJ="1 2 3 4 5 6 7 8 9"
 

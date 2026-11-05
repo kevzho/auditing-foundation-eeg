@@ -1,38 +1,13 @@
 #!/usr/bin/env bash
-# Re-run on a deterministic backend every configuration whose retained result
-# was produced on MPS.
-#
-# MPS has no deterministic index_put kernel, so those runs carry
-# deterministic=False in their platform fingerprint. Section 8b of
-# Final reported numbers must come
-# from a deterministic backend, and the two headline results -- CBraMod
-# fine-tuned and the tuned broadband convnet -- are both in that set.
-#
-# Output goes to results/fm_probe_cpu/ rather than overwriting results/fm_probe/,
-# so the MPS artifacts survive for the platform-sensitivity comparison that
-# src/scripts/compare_platform_runs.py produces.
-#
-# Parameters below are transcribed from each run's *_run.json. One config is
-# deliberately absent: fm_probe_finetune_run.json (LaBraM p2/p4, un-tagged)
-# predates the current run-json format and records no lr, epoch count, or
-# freeze depth, so it cannot be reproduced faithfully without guessing. Decide
-# whether to reconstruct it or to retire those two rows in favour of
-# labram_finetune_sel before reporting.
-#
-# Wall clock: CBraMod fine-tune measured at ~6.6 min/subject on CPU, so roughly
-# an hour per 9-subject config and ~5-6 hours for the whole script.
+# Repeat MPS runs on a deterministic CPU backend in a separate output directory.
+# The untagged LaBraM run is omitted because its JSON lacks recipe parameters.
 set -euo pipefail
 
 OUT=results/fm_probe_cpu
 mkdir -p "${OUT}"
 COMMON="--device cpu --patches 4 --epochs 60 --resume --out-dir ${OUT}"
 
-# Two levels of resume. Config level: a finished config writes its CSV only
-# after the last subject, so that file's presence proves completion and the
-# step is skipped. Subject level: --resume on the runners skips subjects whose
-# rows are already in the .partial file, provided the recorded arguments match.
-# Re-running this script after any interruption therefore picks up where it
-# stopped. Delete a CSV to force a config to run again.
+# Finished CSVs skip a config; --resume handles completed subjects within one.
 step () {
   local n="$1" csv="$2" desc="$3"; shift 3
   if [[ -f "${OUT}/${csv}" ]]; then

@@ -4,12 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-# Repository root, not the package directory. The python-layout reorg moved this
-# module into ``src/`` and silently redirected every default path with it --
-# ``DATA_DIR`` became ``src/data/BCICIV_2a_gdf``, which does not exist. Nothing
-# caught it because the arrays those scripts write had already been generated
-# under the old layout, so the defaults were never exercised again until the ICA
-# control needed to re-read the raw GDFs.
+# Data and output paths are relative to the repository root.
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data" / "BCICIV_2a_gdf"
 EPOCH_DIR = BASE_DIR / "analysis_results"

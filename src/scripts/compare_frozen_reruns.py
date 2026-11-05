@@ -37,7 +37,7 @@ import pandas as pd
 from scipy.stats import wilcoxon
 from sklearn.metrics import roc_auc_score
 
-ROOT = Path("/Volumes/kz_extended/CalibMI")
+ROOT = Path(__file__).resolve().parents[2]
 ORIGINAL = ROOT / "results" / "fm_probe"
 RERUN = ROOT / "results" / "fm_probe_frozen_probs"
 KEYS = ["dataset", "subject", "experiment_key"]

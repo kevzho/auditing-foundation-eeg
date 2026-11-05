@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import copy
 import csv
-import json
 import math
 import sys
 from pathlib import Path
@@ -39,7 +38,6 @@ from experiments.run_classical_anchor_competence import (
     fit_temperature_from_logits,
     load_minimal_baselines,
     load_variant_metrics,
-    make_jsonable,
     paired_deltas,
     prepare_subject,
     proba_from_logits,

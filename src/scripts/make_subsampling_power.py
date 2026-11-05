@@ -112,7 +112,6 @@ def main() -> None:
         df.insert(0, "arm", label)
         frames.append(df)
 
-        full = df[df.n == deltas.size].iloc[0]
         at9 = df[df.n == 9]
         summary.append({
             "arm": label,

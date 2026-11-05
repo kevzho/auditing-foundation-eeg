@@ -26,7 +26,7 @@
 # pending in separate processes that re-read the runner.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${ROOT}" || { echo "FATAL: ${ROOT} unreachable" >&2; exit 1; }
 
 if ! python src/experiments/run_supervised_on_fm_data.py --help 2>&1 | grep -q -- "--tag"; then

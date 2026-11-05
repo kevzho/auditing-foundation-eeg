@@ -39,9 +39,8 @@ CalibMI
                                    temperature survive on-device precision?
                                    needs requirements-edge.txt and a checkpoint
 
-Per-trial probability archives are not in this repository because of their size.
-See README.md for the Zenodo record; unpack it into results/ before running
-`reliability`.
+Per-trial probability archives are not in this repository because of their size;
+`reliability` and the reliability figure need them under results/.
 USAGE
 }
 

@@ -24,7 +24,7 @@
 # deficit harder to claim, not easier.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 OUT="${ROOT}/results/supervised_sota"
 SUBJ="1 2 3 4 5 6 7 8 9"
 GRID="3e-2 1e-2 3e-3 1e-3 3e-4"

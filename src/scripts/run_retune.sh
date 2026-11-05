@@ -30,7 +30,7 @@
 set -uo pipefail
 
 ARCH="${1:?usage: run_retune.sh <atcnet|eegconformer>}"
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 OUT="${ROOT}/results/supervised_sota"
 SUBJ="1 2 3 4 5 6 7 8 9"
 EPOCHS=400

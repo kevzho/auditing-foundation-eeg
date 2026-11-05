@@ -40,7 +40,7 @@
 # `compare_frozen_reruns.py` does that comparison once this finishes.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${ROOT}" || { echo "FATAL: ${ROOT} unreachable" >&2; exit 1; }
 
 OUT=results/fm_probe_frozen_probs

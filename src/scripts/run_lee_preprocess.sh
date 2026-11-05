@@ -18,7 +18,7 @@
 # and no narrowband, and re-running it must redo both.
 set -uo pipefail
 
-ROOT=/Volumes/kz_extended/CalibMI
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 RETRIES=2
 
 cd "${ROOT}" || { echo "FATAL: ${ROOT} unreachable" >&2; exit 1; }

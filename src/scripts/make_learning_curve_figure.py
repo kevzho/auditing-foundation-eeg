@@ -86,7 +86,6 @@ def main() -> None:
         ax.legend(frameon=False)
         ax.spines[["top", "right"]].set_visible(False)
 
-    n_epochs = max(int(r["best_epoch"]) for r in summary)
     budget = max(len(a.mean(axis=0)) for _, a, _ in datasets)
     fig.suptitle(
         "CBraMod fine-tuning: pretrained weights converge faster and reach lower\n"

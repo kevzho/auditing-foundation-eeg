@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import copy
 import csv
-import json
 import math
 import os
 import sys
@@ -40,7 +39,6 @@ from experiments.run_classical_anchor_competence import (
     apply_standardize,
     distill_loss,
     fit_temperature_from_logits,
-    make_jsonable,
     proba_from_logits,
     standardize_fit,
     write_json,
