@@ -34,8 +34,8 @@ OUT = Path("paper") / "figures"
 # IEEE column width; first three slots of the validated categorical palette,
 # each paired with a marker so the figures survive grayscale print.
 COL_W = 3.45
-INK, INK_2, GRID = "#0b0b0b", "#52514e", "#d9d8d4"
-BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
+INK, INK_2, GRID = "#211F24", "#625E63", "#DEDBD9"
+BLUE, ORANGE, AQUA = "#C12D50", "#7045D0", "#16834B"
 
 plt.rcParams.update({
     "font.family": "serif",
@@ -65,14 +65,12 @@ def _contrasts_module():
     spec.loader.exec_module(mod)
     return mod
 
-
 def _save(fig, name: str) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for ext in ("pdf", "png"):
         fig.savefig(OUT / f"{name}.{ext}", dpi=300, bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
     print(f"wrote {OUT / name}.pdf")
-
 
 def matched_input() -> None:
     m = _contrasts_module()
@@ -134,9 +132,10 @@ def learning_curve() -> None:
                 markeredgecolor="white", markeredgewidth=0.6, zorder=5)
         text = f"{label}: best {mean[best]:.3f} @ ep. {best + 1}"
         if label == "pretrained":
-            ax.annotate(text, (best + 1, mean[best]), xytext=(0, -10), textcoords="offset points",
-                        fontsize=6.5, color=INK, ha="center")
-        else:  # clear space above the curve, with a leader to the marker
+            ax.annotate(text, (best + 1, mean[best]), xytext=(-20, -30), textcoords="offset points",
+                        fontsize=6.5, color=INK, ha="center", 
+                        arrowprops=dict(arrowstyle="-", color=INK_2, linewidth=0.5, shrinkB=3))
+        else: 
             ax.annotate(text, (best + 1, mean[best]), xytext=(mean.size, 1.05), textcoords="data",
                         fontsize=6.5, color=INK, ha="right", va="bottom",
                         arrowprops=dict(arrowstyle="-", color=INK_2, linewidth=0.5, shrinkB=3))
@@ -147,13 +146,11 @@ def learning_curve() -> None:
     ax.set_axisbelow(True)
     _save(fig, "fig_learning_curve")
 
-
 def _scale(p: np.ndarray, t: float) -> np.ndarray:
     z = np.log(np.clip(p, 1e-12, 1.0)) / t
     z -= z.max(axis=1, keepdims=True)
     e = np.exp(z)
     return e / e.sum(axis=1, keepdims=True)
-
 
 def _ece(p: np.ndarray, y: np.ndarray, n_bins: int = 15):
     conf, correct = p.max(axis=1), (p.argmax(axis=1) == y).astype(float)
@@ -162,7 +159,6 @@ def _ece(p: np.ndarray, y: np.ndarray, n_bins: int = 15):
     a = np.array([correct[b].mean() for b in bins])
     n = np.array([b.size for b in bins])
     return float(np.sum(n * np.abs(a - c)) / n.sum()), c, a
-
 
 def _load_arm(root: Path, subdir: str, stem: str, key: str):
     metrics = pd.read_csv(root / subdir / f"{stem}_subject_metrics.csv")
