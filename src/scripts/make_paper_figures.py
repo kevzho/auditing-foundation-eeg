@@ -29,7 +29,7 @@ import pandas as pd
 from make_learning_curve_figure import load_curves
 
 HERE = Path(__file__).resolve().parent
-OUT = Path("figures") / "paper"
+OUT = Path("paper") / "figures"
 
 # IEEE column width; first three slots of the validated categorical palette,
 # each paired with a marker so the figures survive grayscale print.

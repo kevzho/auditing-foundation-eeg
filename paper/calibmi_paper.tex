@@ -16,6 +16,8 @@
 \setlength{\belowcaptionskip}{0pt}
 \setlength{\intextsep}{5pt plus 1pt minus 2pt}
 
+\graphicspath{{figures/}}
+
 \newcommand{\method}[1]{\texttt{#1}}
 
 \title{Matched-Input Estimates Differ in Sign Across Architectures:\\
@@ -178,6 +180,13 @@ LaBraM, frozen           & 0.3322 & 0.7323 & 0.0874 \\
 
 Under the initial reference recipe, the validation-optimal epoch occurs between epochs 0 and 4 across runs even though warm-up lasts six epochs: the model peaks before reaching its nominal learning rate. A six-configuration search ranked entirely on validation data improves fine-tuning substantially without reversing the ordering in Table~\ref{tab:main}. The successful changes---freezing additional blocks and lowering learning rate---both limit displacement from pretrained weights, consistent with overfitting under a roughly 230-trial subject-specific fit budget.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_matched_input.pdf}
+\caption{Per-subject matched-input terms (narrowband minus broadband held-out accuracy) on BCI IV-2a. Grey lines join the same subject across architectures; diamonds and bars give the mean and 95\% subject-bootstrap interval.}
+\label{fig:matched}
+\end{figure}
+
 \subsection{Matched-Input Estimates Differ in Sign}
 
 We define the matched-input term as narrowband minus broadband accuracy for the same comparator family. A negative value therefore means the broadband foundation-model pathway performs better. Both arms of each term share one single-window training recipe; the cropped ShallowConvNet of Table~\ref{tab:main} is deliberately excluded, because comparing against it would mix training recipe with input pipeline.
@@ -198,7 +207,14 @@ EEG Conformer  & .6182 & .5305 & $+.088$ & 8/9 & .176 \\
 \end{tabular}
 \end{table}
 
-For ATCNet, broadband input improves mean accuracy by 0.078 and wins for eight of nine subjects (1/9 narrowband wins). For EEG Conformer, the direction reverses: narrowband improves mean accuracy by 0.088 and wins for eight of nine subjects. ShallowConvNet lies between those cases. None of the three individual terms survives Benjamini--Hochberg correction, and each reflects a narrow per-pathway search (kernel and filter count for ShallowConvNet, learning rate otherwise) that a wider search could move. Subject-level 95\% bootstrap intervals are $[-.160,-.017]$ for ATCNet, $[-.004,+.082]$ for ShallowConvNet, and $[-.030,+.171]$ for EEG Conformer. Contrasting the architecture-specific terms directly within subject, the EEG Conformer term exceeds the ATCNet term by 0.165 (9/9 subjects, $p_{\mathrm{BH}}=.006$) and the ShallowConvNet term exceeds it by 0.114 (9/9, $p_{\mathrm{BH}}=.006$); EEG Conformer and ShallowConvNet do not differ detectably (0.051, $p_{\mathrm{BH}}=.129$). These contrasts come from one fit/selection split and one training seed per arm, so they indicate that ATCNet responds differently to the input change rather than establishing why.
+For ATCNet, broadband input improves mean accuracy by 0.078 and wins for eight of nine subjects (1/9 narrowband wins). For EEG Conformer, the direction reverses: narrowband improves mean accuracy by 0.088 and wins for eight of nine subjects. ShallowConvNet lies between those cases. None of the three individual terms survives Benjamini--Hochberg correction, and each reflects a narrow per-pathway search (kernel and filter count for ShallowConvNet, learning rate otherwise) that a wider search could move. Subject-level 95\% bootstrap intervals are $[-.160,-.017]$ for ATCNet, $[-.004,+.082]$ for ShallowConvNet, and $[-.030,+.171]$ for EEG Conformer. Fig.~\ref{fig:matched} shows the subject-level spread. Contrasting the architecture-specific terms directly within subject, the EEG Conformer term exceeds the ATCNet term by 0.165 (9/9 subjects, $p_{\mathrm{BH}}=.006$) and the ShallowConvNet term exceeds it by 0.114 (9/9, $p_{\mathrm{BH}}=.006$); EEG Conformer and ShallowConvNet do not differ detectably (0.051, $p_{\mathrm{BH}}=.129$). These contrasts come from one fit/selection split and one training seed per arm, so they indicate that ATCNet responds differently to the input change rather than establishing why.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_learning_curve.pdf}
+\caption{Validation Brier for fine-tuned CBraMod from pretrained and random weights under an equal 240-epoch budget on BCI IV-2a (mean $\pm$ s.e.m.\ over nine subjects; markers at each minimum).}
+\label{fig:curve}
+\end{figure}
 
 \subsection{Task Dependence and Robustness}\label{sec:robust}
 
@@ -206,11 +222,18 @@ On BNCI2014-004, fine-tuned CBraMod reaches 0.8085 accuracy, compared with 0.845
 
 The decisive fine-tuned-CBraMod versus random-initialization comparison was repeated under three independent full-pipeline reseeds, redrawing the fit/selection split, initialization, and batch order. Subject-averaged effects are 0.139, 0.132, and 0.130 on BCI IV-2a and 0.107, 0.111, and 0.108 on BNCI2014-004. Each of the six paired comparisons is individually significant under the same subject-level test, and the lowest subject win count is eight of nine. These are robustness checks rather than a separate corrected confirmatory family; seed-to-seed spread is not treated as inferential uncertainty across subjects. Three deterministic CPU reruns of the same comparison give fine-tuned CBraMod accuracies of 0.450--0.485 and effects of 0.107--0.148 on BCI IV-2a (8--9/9 wins) and 0.078--0.145 on BNCI2014-004 (8/9), so the conclusion does not depend on the MPS backend.
 
-To test whether the random-initialization arm was simply under-trained, we repeated the BCI IV-2a comparison for 240 epochs for both arms. Random initialization gained 0.017 accuracy and closed 0.024 of the gap, while the pretrained arm did not improve. Random initialization reached its best validation Brier near epoch 218 and was approximately flat from epoch 190 onward; its best value, 0.755, remained near the four-class chance Brier of 0.750.
+To test whether the random-initialization arm was simply under-trained, we repeated the BCI IV-2a comparison for 240 epochs for both arms (Fig.~\ref{fig:curve}). Random initialization gained 0.017 accuracy and closed 0.024 of the gap, while the pretrained arm did not improve. Random initialization reached its best validation Brier near epoch 218 and was approximately flat from epoch 190 onward; its best value, 0.755, remained near the four-class chance Brier of 0.750.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_reliability.pdf}
+\caption{Held-out BCI IV-2a reliability before and after validation-fitted temperature scaling (pooled trials, 15 equal-mass bins; legend ECE is the per-subject mean). The random-initialization panel uses the deterministic CPU rerun; Table~\ref{tab:calib} reports the MPS run (raw .464, scaled .099).}
+\label{fig:reliability}
+\end{figure}
 
 \subsection{Calibration}
 
-Raw foundation-model logits are strongly overconfident. Frozen configurations require validation-fitted temperatures from 3.1 to 9.5, with one to four of nine subjects reaching the 20.0 cap, compared with approximately 1.03 for broadband ShallowConvNet. Table~\ref{tab:calib} reports held-out metrics before and after scaling. After temperature scaling, held-out CBraMod ECE falls between 0.103 and 0.124, within the 0.101--0.143 range observed across the eight validation-tuned single-window supervised arms on BCI IV-2a (the six matched-input arms of Table~\ref{tab:matched}, ICA-cleaned broadband ShallowConvNet, and retuned narrowband ATCNet) despite much lower four-class accuracy. Scaling improves Brier only modestly for the pretrained arms; the large raw-to-scaled change belongs to the random-initialization control, whose raw ECE of 0.464 falls to 0.099.
+Raw foundation-model logits are strongly overconfident. Frozen configurations require validation-fitted temperatures from 3.1 to 9.5, with one to four of nine subjects reaching the 20.0 cap, compared with approximately 1.03 for broadband ShallowConvNet. Table~\ref{tab:calib} and Fig.~\ref{fig:reliability} report held-out calibration before and after scaling. After temperature scaling, held-out CBraMod ECE falls between 0.103 and 0.124, within the 0.101--0.143 range observed across the eight validation-tuned single-window supervised arms on BCI IV-2a (the six matched-input arms of Table~\ref{tab:matched}, ICA-cleaned broadband ShallowConvNet, and retuned narrowband ATCNet) despite much lower four-class accuracy. Scaling improves Brier only modestly for the pretrained arms; the large raw-to-scaled change belongs to the random-initialization control, whose raw ECE of 0.464 falls to 0.099.
 
 \begin{table}[t]
 \centering
