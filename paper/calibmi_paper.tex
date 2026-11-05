@@ -1,7 +1,10 @@
 \pdfoutput=1
 \documentclass[conference]{IEEEtran}
 
-\usepackage{amsmath,amssymb}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{textcomp}
+\usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{url}
@@ -9,12 +12,6 @@
 \usepackage{array}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
-
-\setlength{\textfloatsep}{5pt plus 1pt minus 2pt}
-\setlength{\floatsep}{4pt plus 1pt minus 2pt}
-\setlength{\abovecaptionskip}{2pt}
-\setlength{\belowcaptionskip}{0pt}
-\setlength{\intextsep}{5pt plus 1pt minus 2pt}
 
 \graphicspath{{figures/}}
 
@@ -36,7 +33,7 @@ sparsh.roy.idk@gmail.com}}
 \maketitle
 
 \begin{abstract}
-We audit LaBraM and CBraMod on motor imagery under a validation-locked protocol in which preprocessing, architecture, optimization, freeze depth, checkpoint, temperature, and method selection are determined using training-session data only. In four-class BCI Competition IV-2a, every supervised comparator evaluated here outperforms every foundation-model configuration, including validation-selected fine-tuning. However, is this due to representation strength, or is it confounded by differing preprocessing methods? Retraining 3 supervised architectures on the same broadband arrays consumed by the foundation models shows that this accuracy difference under matched input conditions varies in sign across architectures ($\Delta\mathrm{acc}_{\mathrm{narrowband}-\mathrm{broadband}} = -0.078$ for ATCNet, but $0.088$ for EEG Conformer). None of the 3 terms is significant after correcting for multiple comparisons ($n = 9$), and a direct subject-paired contrast of these architecture-specific terms only shows a difference between ATCNet and the other 2 comparators. This comparison is based on only one split/seed, so the differing signs are merely exploratory, but they suggest that evaluating a single comparator may not be sufficient to separate pretraining and supervised training contributions to the performance in an architecture-invariant manner. Finally, we do not observe the same 4-class deficit when training on a 2-class motor imagery dataset (BNCI2014-004), and we use temperature scaling fitted on a validation set to bring the foundation model's calibration error down to the range of supervised models despite its lower accuracy for the 4-class task.
+We audit LaBraM and CBraMod on motor imagery under a validation-locked protocol in which preprocessing, architecture, optimization, freeze depth, checkpoint, temperature, and method selection are determined using training-session data only. In four-class BCI Competition IV-2a, every supervised comparator evaluated here outperforms every foundation-model configuration, including validation-selected fine-tuning. However, is this due to representation strength, or is it confounded by differing preprocessing methods? Retraining 3 supervised architectures on the same broadband arrays consumed by the foundation models shows that this accuracy difference under matched input conditions varies in sign across architectures (narrowband minus broadband accuracy of \textminus0.078 for ATCNet, but 0.088 for EEG Conformer). None of the 3 terms is significant after correcting for multiple comparisons (nine subjects), and a direct subject-paired contrast of these architecture-specific terms only shows a difference between ATCNet and the other 2 comparators. This comparison is based on only one split/seed, so the differing signs are merely exploratory, but they suggest that evaluating a single comparator may not be sufficient to separate pretraining and supervised training contributions to the performance in an architecture-invariant manner. Finally, we do not observe the same 4-class deficit when training on a 2-class motor imagery dataset (BNCI2014-004), and we use temperature scaling fitted on a validation set to bring the foundation model's calibration error down to the range of supervised models despite its lower accuracy for the 4-class task.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -45,7 +42,7 @@ EEG, brain--computer interface, foundation models, motor imagery, model evaluati
 
 \section{Introduction}
 
-Electroencephalography (EEG) is a non-invasive method of measuring neural activity. It has been utilized for brain--computer interfaces (BCIs), which translate neural signals into actionable commands for assistive devices (e.g., prosthetics, FES therapy) \cite{lotte2018review}. A common BCI task is predicting \emph{motor imagery}, where imagined movements produce distinct neural patterns (e.g., "right-hand raise" vs.\ "left-footed kick") \cite{pfurtscheller1999erd,lotte2018review}. However, decoding neural recordings remains difficult due to variability across participants, settings, and time, and collecting EEG data is costly \cite{lotte2018review,brunner2024bcifes}.
+Electroencephalography (EEG) is a non-invasive method of measuring neural activity. It has been utilized for brain--computer interfaces (BCIs), which translate neural signals into actionable commands for assistive devices (e.g., prosthetics, functional electrical stimulation (FES) therapy) \cite{lotte2018review}. A common BCI task is predicting \emph{motor imagery}, where imagined movements produce distinct neural patterns (e.g., ``right-hand raise'' vs.\ ``left-footed kick'') \cite{pfurtscheller1999erd,lotte2018review}. However, decoding neural recordings remains difficult due to variability across participants, settings, and time, and collecting EEG data is costly \cite{lotte2018review,brunner2024bcifes}.
 These constraints make generalizable neural representations imperative, and they have been the focus of recent EEG foundation models, which are pretrained on large collections of neural recordings. Such models (e.g., LaBraM \cite{jiang2024labram}, CBraMod \cite{wang2025cbramod}) learn representations that reduce dependence on task-specific labeled data, and demonstrate transfer across participants and tasks. However, these models have shown inconsistent benefits over standard supervised decoders in recent benchmarks \cite{kontras2026neuroatlas,zare2026negativecontrol}. As foundation models are poised to become more prevalent in neural decoding, their improvements over supervised decoders must be reliable enough to justify their inherent complexity and higher cost of training.
 Evaluating these improvements is also difficult, as different model types (foundation vs.\ supervised) require different input pipelines (e.g., filtering, sampling rate, scaling), so an observed performance gap may reflect pipeline differences rather than differences in the learned representations \cite{kontras2026neuroatlas}. Furthermore, the impact of a preprocessing pipeline may differ by the supervised model chosen for comparison, so a single baseline may not be sufficient to establish the value of pretraining.
 Here, we perform a validation-locked audit of LaBraM and CBraMod on motor imagery classification. (1) Using only data from the training session to select methods and models, we compare the encoders of these foundation models to three architectures trained in a supervised fashion, as well as architecture-matched controls with random initialization. (2) We retrain the supervised architectures on the same broadband inputs used by the foundation models to determine whether the matched-input accuracy difference is consistent across comparators. (3) We evaluate whether the accuracy deficit is task-dependent, and how improved probability calibration relates to classification accuracy.
@@ -59,7 +56,7 @@ Here, we perform a validation-locked audit of LaBraM and CBraMod on motor imager
     box/.style={draw,rounded corners=1.5pt,align=center,minimum width=1.9cm,
                 minimum height=6mm,inner xsep=3pt,inner ysep=2.5pt},
     wide/.style={box,minimum width=2.4cm},
-    arr/.style={->,line width=.45pt},
+    arr/.style={->,line width=0.45pt},
     title/.style={font=\footnotesize\bfseries,anchor=west}
 ]
 % ---------- (a) Validation-locked evaluation ----------
@@ -103,7 +100,7 @@ LaBraM \cite{jiang2024labram} and CBraMod \cite{wang2025cbramod} are transformer
 NeuroAtlas notes that EEG-specific preprocessing may affect reported results \cite{kontras2026neuroatlas}. We measure the corresponding input-matching difference by retraining each supervised comparator on the broadband arrays supplied to the foundation models. Because the pathways differ in band, sampling rate, filter design, notching, scaling, and validation-selected retuning, we call the quantity the \emph{matched-input term}, not an isolated preprocessing effect.
 
 \textbf{Supervised motor-imagery decoders.}
-Classical CSP and filter-bank CSP remain established references \cite{ramoser2000csp,ang2008fbcsp}, while EEGNet \cite{lawhern2018eegnet} is a widely used compact neural baseline. Our evaluated comparator set is ShallowConvNet \cite{schirrmeister2017deep}, ATCNet \cite{altaheri2023atcnet}, and EEG Conformer \cite{song2023conformer}.
+Classical common spatial pattern (CSP) and filter-bank CSP remain established references \cite{ramoser2000csp,ang2008fbcsp}, while EEGNet \cite{lawhern2018eegnet} is a widely used compact neural baseline. Our evaluated comparator set is ShallowConvNet \cite{schirrmeister2017deep}, ATCNet \cite{altaheri2023atcnet}, and EEG Conformer \cite{song2023conformer}.
 
 
 \section{Validation-Locked Protocol}
@@ -116,7 +113,7 @@ To eliminate data leakage in the selection of hyperparameters and preprocessing,
 
 For BCI IV 2a, all 9 subjects were used. After rejecting artifacts (epochs exceeding 100\,$\mu$V peak-to-peak, narrowband supervised pathway only), subject 9 had 221, 56, and 264 trials in the fit, selection, and held-out sets, respectively; the other subjects had 230, 58, and 288 trials. The broadband pathway, including both foundation models, applied no amplitude rejection, so subject 9's matched-input terms compare slightly different trial sets. The fit and selection splits were a stratified 80/20\% split of the training session, (seed 42). For BNCI2014004, sessions with fold \texttt{train} were the training session (3) and sessions with fold \texttt{test} were the held-out session (2).
 
-Epochs were 0--4.5 seconds after the cue. For supervised models, EEG was IIR filtered 8--30\,Hz at 250\,Hz and standardized by channel with statistics from the fit split. For foundation models, EEG was zero-phase FIR filtered 0.1--75\,Hz at 250\,Hz with a 50\,Hz notch, resampled to 200\,Hz, and cropped from the cue to the nearest whole second, yielding 4 seconds (800 samples) of EEG. Voltages were converted to microvolts and divided by 100 at the encoder boundary, consistent with the reference implementations. For supervised models trained using the foundation model preprocessing, the input was the same array, standardized by channel with statistics from the fit split. Frozen probes were an L2-penalized logistic regression with $C$ selected from [0.001, 0.01, 0.1, 1, 10], fit on the features of the encoder. For CBraMod, mean pooling across channels and patches or flattening was selected on the selection split. For LaBraM, the \texttt{fc\_norm} layer, mean-pooled, was used. Fine-tuning trained the encoder together with its linear classification head. Foundation models use learned electrode representations, so require a canonical montage. The montage was reconstructed and checked for all files. All runs were annotated with the device, software versions, and whether they were run deterministically. Results from different devices are not pooled. Frozen probe calculations were run deterministically on CPU. Supervised comparators and fine-tuning were run on Apple's MPS device, which is not bitwise deterministic. In Section~\ref{sec:robust}, a rerun of the important comparison on a deterministic CPU run is provided.
+Epochs were 0--4.5 seconds after the cue. For supervised models, EEG was infinite impulse response (IIR) filtered 8--30\,Hz at 250\,Hz and standardized by channel with statistics from the fit split. For foundation models, EEG was zero-phase finite impulse response (FIR) filtered 0.1--75\,Hz at 250\,Hz with a 50\,Hz notch, resampled to 200\,Hz, and cropped from the cue to the nearest whole second, yielding 4 seconds (800 samples) of EEG. Voltages were converted to microvolts and divided by 100 at the encoder boundary, consistent with the reference implementations. For supervised models trained using the foundation model preprocessing, the input was the same array, standardized by channel with statistics from the fit split. Frozen probes were an L2-penalized logistic regression with $C$ selected from [0.001, 0.01, 0.1, 1, 10], fit on the features of the encoder. For CBraMod, mean pooling across channels and patches or flattening was selected on the selection split. For LaBraM, the \texttt{fc\_norm} layer, mean-pooled, was used. Fine-tuning trained the encoder together with its linear classification head. Foundation models use learned electrode representations, so require a canonical montage. The montage was reconstructed and checked for all files. All runs were annotated with the device, software versions, and whether they were run deterministically. Results from different devices are not pooled. Frozen probe calculations were run deterministically on CPU. Supervised comparators and fine-tuning were run on Apple's Metal Performance Shaders (MPS) device, which is not bitwise deterministic. In Section~\ref{sec:robust}, a rerun of the important comparison on a deterministic CPU run is provided.
 
 \section{Experimental Design}
 
@@ -177,25 +174,26 @@ The initial reference recipe hyperparameters entail a validation-optimal number 
 
 \subsection{Matched-Input Estimates of the Broadband Effect Have Contrasting Signs}
 
-Here, "matched input" refers to the difference (narrowband $-$ broadband) within each comparator family, each trained using a single window (unlike the cropped ShallowConvNet from Table~\ref{tab:main}); negative values favor broadband.
+Here, ``matched input'' refers to the difference (narrowband $-$ broadband) within each comparator family, each trained using a single window (unlike the cropped ShallowConvNet from Table~\ref{tab:main}); negative values favor broadband.
 
 \begin{table}[t]
 \centering
 \caption{Matched-input analysis on BCI IV-2a ($n=9$). Wins count subjects for which narrowband input achieved higher accuracy. $^{\dagger}$Single-window recipe, not the cropped model of Table~\ref{tab:main}.}
 \label{tab:matched}
 \small
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{lccccc}
 \toprule
 Architecture & Narrow & Broad & Diff. & Wins & $p_{\mathrm{BH}}$ \\
 \midrule
-ATCNet         & .5788 & .6562 & $-.078$ & 1/9 & .073 \\
-ShallowConvNet$^{\dagger}$ & .6453 & .6084 & $+.037$ & 5/9 & .304 \\
-EEG Conformer  & .6182 & .5305 & $+.088$ & 8/9 & .176 \\
+ATCNet         & 0.5788 & 0.6562 & $-0.078$ & 1/9 & 0.073 \\
+ShallowConvNet$^{\dagger}$ & 0.6453 & 0.6084 & $+0.037$ & 5/9 & 0.304 \\
+EEG Conformer  & 0.6182 & 0.5305 & $+0.088$ & 8/9 & 0.176 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:matched} and Fig.~\ref{fig:matched} indicate a broadband improvement to ATCNet of 0.078 and a narrowband improvement to EEG Conformer of 0.088. None of these individual terms were significant after Benjamini--Hochberg correction. However, direct comparisons of EEG Conformer with ATCNet (0.165, 9/9 subjects, $p_{\text{BH}}=.006$) and ShallowConvNet with ATCNet (0.114, 9/9, $p_{\text{BH}}=.006$) were significant after Benjamini--Hochberg correction. EEG Conformer and ShallowConvNet were not detectably different ($p_{\text{BH}}=.129$). These direct comparisons are exploratory, as only a single split and seed was considered per arm.
+Table~\ref{tab:matched} and Fig.~\ref{fig:matched} indicate a broadband improvement to ATCNet of 0.078 and a narrowband improvement to EEG Conformer of 0.088. None of these individual terms were significant after Benjamini--Hochberg correction. However, direct comparisons of EEG Conformer with ATCNet (0.165, 9/9 subjects, $p_{\text{BH}}=0.006$) and ShallowConvNet with ATCNet (0.114, 9/9, $p_{\text{BH}}=0.006$) were significant after Benjamini--Hochberg correction. EEG Conformer and ShallowConvNet were not detectably different ($p_{\text{BH}}=0.129$). These direct comparisons are exploratory, as only a single split and seed was considered per arm.
 
 \begin{figure}[t]
 \centering
@@ -215,7 +213,7 @@ Extending training to 240 epochs, for both arms, improved the accuracy of the ra
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_reliability.pdf}
-\caption{Held-out BCI IV-2a reliability before and after validation-fitted temperature scaling (pooled trials, 15 equal-mass bins; legend ECE is the per-subject mean). The random-initialization panel uses the deterministic CPU rerun; Table~\ref{tab:calib} reports the MPS run (raw .464, scaled .099).}
+\caption{Held-out BCI IV-2a reliability before and after validation-fitted temperature scaling (pooled trials, 15 equal-mass bins; legend ECE is the per-subject mean). The random-initialization panel uses the deterministic CPU rerun; Table~\ref{tab:calib} reports the MPS run (raw 0.464, scaled 0.099).}
 \label{fig:reliability}
 \end{figure}
 
@@ -228,19 +226,19 @@ The unscaled foundation-model logits are typically overconfident. Fitted validat
 \caption{Held-out BCI IV-2a calibration before (raw) and after validation-fitted temperature scaling ($n=9$). ECE: top-label, 15 equal-mass bins; brackets give 95\% subject-bootstrap intervals for scaled ECE. NLL is after scaling.}
 \label{tab:calib}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{2.7pt}
 \begin{tabular}{lccccc}
 \toprule
  & \multicolumn{2}{c}{Brier} & \multicolumn{2}{c}{ECE} & \\
 Configuration & raw & scaled & raw & scaled [95\% CI] & NLL \\
 \midrule
-ATCNet, broadband     & .507 & .470 & .170 & .106 [.085,.131] & .875 \\
-ShallowConvNet, broad. & .499 & .506 & .087 & .101 [.089,.115] & .952 \\
-EEG Conformer, broad. & .648 & .586 & .208 & .107 [.089,.123] & 1.079 \\
-CBraMod, fine-tuned   & .670 & .649 & .152 & .124 [.106,.142] & 1.212 \\
-CBraMod, frozen       & .722 & .708 & .124 & .103 [.092,.116] & 1.307 \\
-CBraMod, random init. & 1.057 & .740 & .464 & .099 [.085,.114] & 1.373 \\
-LaBraM, frozen        & .734 & .732 & .088 & .087 [.081,.094] & 1.352 \\
+ATCNet, broadband     & 0.507 & 0.470 & 0.170 & 0.106 [0.085,0.131] & 0.875 \\
+ShallowConvNet, broad. & 0.499 & 0.506 & 0.087 & 0.101 [0.089,0.115] & 0.952 \\
+EEG Conformer, broad. & 0.648 & 0.586 & 0.208 & 0.107 [0.089,0.123] & 1.079 \\
+CBraMod, fine-tuned   & 0.670 & 0.649 & 0.152 & 0.124 [0.106,0.142] & 1.212 \\
+CBraMod, frozen       & 0.722 & 0.708 & 0.124 & 0.103 [0.092,0.116] & 1.307 \\
+CBraMod, random init. & 1.057 & 0.740 & 0.464 & 0.099 [0.085,0.114] & 1.373 \\
+LaBraM, frozen        & 0.734 & 0.732 & 0.088 & 0.087 [0.081,0.094] & 1.352 \\
 \bottomrule
 \end{tabular}
 \end{table}
